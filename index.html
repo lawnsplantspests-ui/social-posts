@@ -87,6 +87,8 @@
   .posts{padding:14px 18px 20px;display:none}
   .posts.show{display:block}
   .posts .lead{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+  .weekhead{font-size:13px;font-weight:800;color:#444;margin:6px 0 10px;padding-bottom:5px;
+    border-bottom:2px solid var(--line);letter-spacing:.2px}
 
   .postcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
     padding:15px 16px;margin-bottom:14px}
@@ -205,7 +207,15 @@ const BIZ = [
         {t:"Soil test first",type:"question",p:"Before you dump fertilizer on the lawn this spring, consider a soil test. It tells you your pH and exactly what's missing, so you feed what the lawn actually needs instead of guessing. Penn State Extension offers cheap mail-in kits.\nHave you ever had your soil tested?",h:"#SoilHealth #LawnCare #GardeningPA"},
         {t:"Mulch volcanoes",type:"cta",p:"Please don't build a 'mulch volcano' around your trees! Piling mulch against the trunk traps moisture, invites rot, rodents, and disease. Keep mulch 2–3 inches deep and pulled back a few inches from the bark — a donut, not a volcano.\nSave this and check your trees this weekend.",h:"#TreeCare #Mulching #LandscapingTips"},
         {t:"Dandelion debate",type:"poll",p:"Dandelions: those first yellow flowers are one of the earliest food sources for bees and other pollinators. But left alone, one plant can spread hundreds of seeds across your lawn.\nPull 'em, treat 'em, or leave 'em for the bees? Drop your vote below. 👇",h:"#Dandelions #Pollinators #LawnCare"},
-        {t:"Ants vs termites",type:"question",p:"See winged insects swarming this spring? Flying ants have bent antennae, a pinched waist, and uneven wings. Termites have straight antennae, a thick waist, and four equal wings. One is a nuisance — the other quietly eats your house.\nNot sure which you've got? That's what we're here for.",h:"#PestControl #Termites #HomeMaintenance"}
+        {t:"Ants vs termites",type:"question",p:"See winged insects swarming this spring? Flying ants have bent antennae, a pinched waist, and uneven wings. Termites have straight antennae, a thick waist, and four equal wings. One is a nuisance — the other quietly eats your house.\nNot sure which you've got? That's what we're here for.",h:"#PestControl #Termites #HomeMaintenance"},
+        {t:"Spring mower tune-up",type:"cta",p:"Before your first cut of the year, give the mower a quick tune-up: fresh oil, a clean air filter, and above all a sharpened blade. A dull blade shreds grass tips, leaving them ragged and brown and open to disease.\nSave this and check your blade before the season starts. 🔧",h:"#LawnCareTips #MowingTips #SpringLawn"},
+        {t:"Split pre-emergent",type:"question",p:"A single pre-emergent treatment guards against crabgrass for about 8 to 10 weeks. In a long central-PA summer, a lighter second application in late spring keeps that protection going right through the hot months when crabgrass loves to sneak back.\nDid crabgrass creep back on you late last summer?",h:"#CrabgrassControl #LawnCare #PALawns"},
+        {t:"Grass type for PA",type:"poll",p:"Two great cool-season choices for our area: tall fescue is tough, drought-tolerant, and handles foot traffic, while Kentucky bluegrass is lush and repairs itself by spreading. Many local lawns are a blend of both.\nTall fescue or bluegrass — do you know what's growing in your yard?",h:"#GrassSeed #LawnRenovation #PALawns"},
+        {t:"Spring cleanup",type:"share",p:"A light spring raking clears away matted leaves and dead thatch so sunlight and air can reach the crowns of your grass and wake it up faster. If that spongy thatch layer is more than half an inch thick, it's time to dethatch.\nShare with a friend tackling their spring yard cleanup. 🧹",h:"#SpringLawnCare #Thatch #LawnCare"},
+        {t:"When to first mow",type:"question",p:"It's tempting to fire up the mower on the first warm day, but wait until the grass is actively growing and stands about 3.5 inches tall, then trim just the top third. Cutting too early or too short stresses a lawn that's still waking up.\nAre you itching to start mowing yet?",h:"#MowingTips #SpringLawn #LawnCare"},
+        {t:"Red thread",type:"cta",p:"Cool, damp spring weather can bring red thread — pinkish-red web-like threads scattered through patches of lawn. It looks alarming but rarely kills the grass, and a balanced feeding usually helps it grow right out of it.\nSave this so you don't panic at pink lawn patches. 🌱",h:"#LawnDisease #LawnCare #PALawns"},
+        {t:"Organic vs synthetic",type:"poll",p:"Synthetic fertilizers feed the lawn fast for quick green-up, while organic options like compost and corn gluten feed slowly and build healthy soil life over time. Many lawns do best with a mix of both approaches.\nOrganic, synthetic, or a bit of both in your yard?",h:"#Fertilizer #SoilHealth #LawnCare"},
+        {t:"Ants indoors",type:"question",p:"As it warms up, ants come indoors scouting for food and moisture — a trail on the counter usually means there's an entry point nearby, not that your kitchen is dirty. Wiping the trail and sealing the gap works better than a single spray.\nSeeing the first ant scouts of the year yet?",h:"#PestControl #Ants #HomeTips"}
       ],
       summer:[
         {t:"Deep watering",type:"cta",p:"In summer heat, water deep and infrequent — about 1 inch once or twice a week, early in the morning. Light daily sprinkles train roots to stay shallow, which makes your lawn weaker when drought hits. A tuna can on the lawn is a perfect free rain gauge.\nSave this watering rule for the hot months. ☀️",h:"#LawnWatering #SummerLawn #LawnCareTips"},
@@ -215,7 +225,15 @@ const BIZ = [
         {t:"Japanese beetles",type:"question",p:"Those metallic-green beetles skeletonizing your roses and beans are Japanese beetles. Hand-picking them into soapy water in the early morning works well — but skip the hanging traps, which actually lure MORE beetles into your yard than they catch.\nAre they hitting your garden this year?",h:"#JapaneseBeetles #GardenPests #PestControl"},
         {t:"Skip summer feeding",type:"cta",p:"Resist the urge to fertilize cool-season lawns in the peak of summer. Pushing new growth when grass is heat-stressed can burn it and invite disease. Wait for the cooler days of early fall — that's when a feeding really pays off.\nSave this so you don't feed at the wrong time. 🌡️",h:"#LawnFertilizer #SummerLawnCare #PALawns"},
         {t:"Sharp blade check",type:"poll",p:"A dull mower blade tears grass instead of slicing it, leaving ragged brown tips that invite disease. Most blades need sharpening every 20–25 hours of mowing — roughly once or twice a season.\nBe honest: when did you last sharpen your mower blade?",h:"#MowingTips #LawnCare #YardWork"},
-        {t:"Ticks & tall grass",type:"question",p:"Ticks love tall grass and the shady edge where your lawn meets the woods. Keeping grass mowed and clearing a border strip makes your yard far less inviting. Pennsylvania leads the country in Lyme disease, so it's worth the effort.\nDo you check for ticks after yard work?",h:"#TickPrevention #LymeDisease #PA"}
+        {t:"Ticks & tall grass",type:"question",p:"Ticks love tall grass and the shady edge where your lawn meets the woods. Keeping grass mowed and clearing a border strip makes your yard far less inviting. Pennsylvania leads the country in Lyme disease, so it's worth the effort.\nDo you check for ticks after yard work?",h:"#TickPrevention #LymeDisease #PA"},
+        {t:"Raise the deck",type:"cta",p:"When summer heat sets in, raise your mowing height to 3.5 to 4 inches. Taller grass shades its own roots and the soil, holding in moisture and crowding out weeds that need bare sunlight to sprout.\nSave this and bump your mower up a notch for July. ☀️",h:"#SummerLawn #MowingTips #LawnCare"},
+        {t:"Brown patch",type:"question",p:"Circular brown patches appearing in hot, humid weather are often a lawn fungus called brown patch. Watering in the early morning (never at night) so the grass dries by evening is one of the best ways to keep it in check.\nSeeing any mystery circles in the lawn this summer?",h:"#LawnDisease #SummerLawn #PALawns"},
+        {t:"Morning watering",type:"poll",p:"Water in the early morning and the lawn drinks deeply before the heat evaporates it, and the blades dry out fast. Evening watering leaves grass damp all night, which invites fungus.\nBe honest — do you water in the morning or after work?",h:"#LawnWatering #SummerLawn #LawnCareTips"},
+        {t:"Chinch bugs",type:"share",p:"Irregular yellowing patches in the hottest, sunniest part of the lawn that spread through summer can be chinch bugs, tiny insects that suck the juices from grass blades. They love drought-stressed turf in full sun.\nShare with a neighbor whose sunny lawn keeps browning out. 🔎",h:"#LawnPests #ChinchBugs #PestControl"},
+        {t:"Thick lawn beats weeds",type:"question",p:"The best weed control isn't a bottle — it's a thick, healthy lawn. Weeds need bare soil and sunlight to take hold, so proper mowing, watering, and feeding crowd them out before they ever start.\nWhat's your most stubborn summer weed?",h:"#WeedControl #LawnCare #HealthyLawn"},
+        {t:"Grasscycle",type:"cta",p:"Skip the bag and let mulched clippings fall back onto the lawn. They break down quickly and return nitrogen to the soil — up to a quarter of your lawn's yearly feeding, absolutely free. It won't cause thatch.\nSave this and leave the clippings this summer. ♻️",h:"#LawnCare #Grasscycling #SummerLawn"},
+        {t:"Wasp nests",type:"poll",p:"Mid-summer is when wasp and hornet nests get big and busy. Nests tucked far from foot traffic can be left to do their bug-eating work, but ones by doors, decks, or play areas are worth removing before fall makes them cranky.\nLeave it be or take it down — where's the line for you?",h:"#WaspControl #PestControl #SummerPests"},
+        {t:"Lanternfly nymphs",type:"question",p:"Those small black bugs with white spots hopping around your plants in early summer are young spotted lanternflies — later they turn red and black before becoming winged adults. Squishing them now means fewer egg-laying adults this fall.\nSpotting the nymphs on your plants yet?",h:"#SpottedLanternfly #InvasiveSpecies #PA"}
       ],
       fall:[
         {t:"Fall is prime time",type:"cta",p:"Fall is the single best time to overseed and fertilize a cool-season lawn in PA. The soil is still warm, nights are cool, weeds are fading, and grass pours its energy into roots. Do the work now and you'll have a thicker, tougher lawn next spring.\nSave this — your fall to-do list starts here. 🍂",h:"#FallLawnCare #Overseeding #PALawns"},
@@ -225,7 +243,15 @@ const BIZ = [
         {t:"Fall invaders",type:"question",p:"Stink bugs, boxelder bugs, and cluster flies aren't trying to eat your house — they just want to sleep through winter inside your walls. The fix is sealing entry points now, before they gather on warm sunny walls in October.\nAre they showing up on your windows yet?",h:"#StinkBugs #FallPests #PestControl"},
         {t:"Last mow shorter",type:"cta",p:"For your final mow of the season, drop the height to about 2.5 inches. Shorter grass going into winter is less likely to mat down under snow and develop snow mold, that gray matted patch you find in spring.\nSave this for your last mow of the year. ❄️",h:"#LawnCareTips #WinterPrep #PALawns"},
         {t:"Bag or mulch leaves",type:"poll",p:"Whole leaves matted on the lawn block light and trap moisture, but shredded leaves are a soil superfood. If you're not mulch-mowing, at least move them to garden beds instead of the trash.\nBag them, mulch them, or blow them into the beds?",h:"#FallLeaves #Composting #YardWork"},
-        {t:"Webworm vs bagworm",type:"question",p:"Seeing silky nests in your trees? Fall webworms build airy webs at the ends of branches and are mostly cosmetic. Bagworms make tough little cone-shaped 'bags' and can defoliate evergreens. Knowing which you have decides whether to shrug or act.\nSpotted any webbing in your trees this fall?",h:"#TreePests #Bagworms #PestControl"}
+        {t:"Webworm vs bagworm",type:"question",p:"Seeing silky nests in your trees? Fall webworms build airy webs at the ends of branches and are mostly cosmetic. Bagworms make tough little cone-shaped 'bags' and can defoliate evergreens. Knowing which you have decides whether to shrug or act.\nSpotted any webbing in your trees this fall?",h:"#TreePests #Bagworms #PestControl"},
+        {t:"Winterizer feed",type:"cta",p:"A late-fall winterizer feeding is one of the most valuable things you can do for a cool-season lawn. The grass stops growing up top but keeps storing energy in its roots, giving you a faster, greener start next spring.\nSave this for your last feeding of the year. 🍂",h:"#FallLawnCare #Fertilizer #PALawns"},
+        {t:"Fall grub check",type:"question",p:"Early fall is a smart time to check for grubs before they burrow deep for winter. Pull back a square foot of loose turf — more than a handful of C-shaped white grubs underneath means it's worth treating now.\nHad any surprise brown patches this fall?",h:"#GrubControl #LawnPests #FallLawnCare"},
+        {t:"Plant bulbs now",type:"poll",p:"Fall is bulb-planting time. Tuck tulips, daffodils, and crocus into the soil now, before the ground freezes, and they'll reward you with the very first color of spring.\nPlanting spring bulbs this year — yes or maybe next year?",h:"#FallGardening #SpringBulbs #GardeningPA"},
+        {t:"Mice move in",type:"share",p:"As nights turn cold, mice start looking for a warm place to spend winter, and a gap the size of a dime is all they need. Sealing foundation cracks and gaps around pipes now is far easier than trapping them later.\nShare with anyone who battles fall mice. 🐭",h:"#RodentControl #FallPestControl #HomeTips"},
+        {t:"Overseed bare spots",type:"question",p:"Fixing a bare patch this fall comes down to two things: good seed-to-soil contact and keeping it moist. Loosen the soil, scatter seed, press it in, and water lightly every day until it sprouts.\nGot a bare spot that's been bugging you all year?",h:"#Overseeding #FallLawnCare #LawnRepair"},
+        {t:"Blow out the irrigation",type:"cta",p:"Before the first hard freeze, drain and disconnect your garden hoses and have irrigation lines blown out. Water left inside expands when it freezes and can crack pipes, spigots, and sprinkler heads.\nSave this on your fall checklist. ❄️",h:"#FallPrep #Irrigation #WinterPrep"},
+        {t:"Cut back or leave",type:"poll",p:"When cleaning up perennials, there's a case for both: cutting spent stems keeps beds tidy, but leaving seed heads and hollow stems feeds birds and shelters helpful insects through winter.\nTidy beds or leave it wild for the wildlife?",h:"#FallGardening #Pollinators #GardenTips"},
+        {t:"Fall yellowjackets",type:"question",p:"Yellowjackets are at their largest and most short-tempered in fall as their colonies peak and natural food runs low — which is why they crash your picnic and hover at the trash. Their nests die off at first frost, so patience often wins.\nHave they been bothering your fall gatherings?",h:"#Yellowjackets #FallPests #PestControl"}
       ],
       winter:[
         {t:"Salt damage",type:"cta",p:"That white crust along your driveway edge in spring is often salt burn. Rock salt draws moisture out of grass and soil. Try sand or a pet-safe calcium chloride for traction, and rinse salty edges once the thaw comes.\nSave this before the next snowfall. ❄️",h:"#WinterLawnCare #SaltDamage #PALawns"},
@@ -235,7 +261,15 @@ const BIZ = [
         {t:"Dormant oil",type:"question",p:"On mild winter days, dormant oil sprayed on trees and shrubs smothers overwintering scale, mites, and aphid eggs before they wake up in spring. It's a quiet, low-toxicity way to knock back next year's pests.\nHave you ever used dormant oil on your shrubs?",h:"#PlantHealth #DormantOil #GardeningPA"},
         {t:"Stay off frosty grass",type:"cta",p:"Walking across frozen or frost-covered grass snaps the frozen blades and can leave brown footprints that linger for weeks. When it's crunchy underfoot, take the long way around.\nSave this and give your lawn a break on frosty mornings. 🥾",h:"#WinterLawnCare #LawnTips #PALawns"},
         {t:"Fungus gnats",type:"poll",p:"Little black flies drifting up from your houseplants in winter are usually fungus gnats — a sign you're overwatering. Let the top inch of soil dry out between waterings and they'll fade fast.\nBattling houseplant bugs right now — yes or no?",h:"#Houseplants #FungusGnats #IndoorPests"},
-        {t:"Why pests come in",type:"question",p:"Ever wonder why you see more spiders and mice indoors in winter? They're not breeding more — they're following warmth, moisture, and food right into your home. That's why pest control is a year-round job, not just a summer one.\nWhere in the house do you spot them most?",h:"#PestControl #WinterPests #HomeTips"}
+        {t:"Why pests come in",type:"question",p:"Ever wonder why you see more spiders and mice indoors in winter? They're not breeding more — they're following warmth, moisture, and food right into your home. That's why pest control is a year-round job, not just a summer one.\nWhere in the house do you spot them most?",h:"#PestControl #WinterPests #HomeTips"},
+        {t:"Dormant pruning",type:"cta",p:"Late winter, while trees and shrubs are still dormant, is the ideal time to prune many of them. With the leaves gone you can see the structure clearly, and cuts heal fast once spring growth begins. Just skip spring bloomers like lilac until after they flower.\nSave this for a late-February pruning day. ✂️",h:"#TreeCare #Pruning #WinterLawnCare"},
+        {t:"Snow mold",type:"question",p:"When snow finally melts you might find matted, grayish or pinkish patches — that's snow mold. Gently raking the area to fluff it up and let it dry usually helps it recover as the lawn greens up.\nEver find these matted patches in early spring?",h:"#LawnDisease #WinterLawnCare #PALawns"},
+        {t:"Feed the birds",type:"poll",p:"Winter bird feeding brings life to a quiet yard and helps the birds that eat plenty of garden pests come spring. Black-oil sunflower seed is a favorite that draws the widest variety.\nDo you keep a feeder going through winter?",h:"#WinterWildlife #BackyardBirds #GardeningPA"},
+        {t:"Firewood pests",type:"share",p:"Firewood is a favorite hideout for spiders, beetles, ants, and other insects. Stack it off the ground and away from the house, and only bring in what you'll burn that day so the bugs don't warm up and wander indoors.\nShare with a friend who heats with wood. 🔥",h:"#PestControl #WinterPests #HomeTips"},
+        {t:"Plant-safe ice melt",type:"question",p:"Traditional rock salt can scorch lawn edges, harm shrubs, and irritate pets' paws. Look for a pet- and plant-friendly ice melt, and use just enough for traction rather than coating the whole walk.\nDo you check what's in your ice melt?",h:"#WinterTips #IceMelt #PlantHealth"},
+        {t:"Brush off heavy snow",type:"cta",p:"Heavy, wet snow can bend and snap evergreen branches. Gently sweep snow off shrubs with a broom, brushing upward from underneath — but leave ice alone, since frozen branches snap easily when you try.\nSave this before the next big snow. ❄️",h:"#WinterPlantCare #ShrubCare #GardeningPA"},
+        {t:"Garden planning season",type:"poll",p:"Winter is dreaming season for gardeners. Flipping through seed catalogs and sketching next year's beds by the fire is half the fun — and it means you're ready to plant the moment spring arrives.\nAre you a seed-catalog planner or a plant-it-on-a-whim gardener?",h:"#GardenPlanning #Gardening #WinterProjects"},
+        {t:"Stink bugs wake up",type:"question",p:"Those brown stink bugs sleeping in your walls can wake on warm winter days and wander toward the light of your windows. Don't squish them — that releases the smell. Vacuum them up or gently sweep them outside instead.\nFinding any on your windowsills this winter?",h:"#StinkBugs #WinterPests #PestControl"}
       ]
     }
   },
@@ -251,7 +285,15 @@ const BIZ = [
         {t:"The waggle dance",type:"question",p:"When a forager finds a great patch of flowers, she comes home and does a 'waggle dance' — a figure-eight wiggle that tells her sisters the exact direction and distance to the food. Bees were doing GPS long before we were.\nDid you know bees could give directions?",h:"#BeeFacts #HoneyBees #Nature"},
         {t:"Water for bees",type:"cta",p:"Bees need water as much as nectar — for cooling the hive and feeding brood. A shallow dish with pebbles or corks for landing spots keeps them from drowning and keeps them out of your pool and pet bowls.\nSave this and set out a bee bath this spring. 💧",h:"#SaveTheBees #Pollinators #Beekeeping"},
         {t:"Raw vs filtered",type:"poll",p:"Raw honey is simply strained, keeping its natural pollen, enzymes, and flavor. Grocery-store honey is often heated and ultra-filtered for a clear look, which strips some of that character.\nTeam raw local honey or team clear golden squeeze-bottle?",h:"#RawHoney #LocalHoney #Honey"},
-        {t:"Package vs nuc",type:"question",p:"Thinking of starting a hive? A 'package' is a box of loose bees with a new queen, while a 'nuc' is a small working mini-colony with drawn comb and brood. Nucs tend to get established faster for beginners.\nDreaming of your first hive? Ask us anything.",h:"#Beekeeping101 #NewBeekeeper #HoneyBees"}
+        {t:"Package vs nuc",type:"question",p:"Thinking of starting a hive? A 'package' is a box of loose bees with a new queen, while a 'nuc' is a small working mini-colony with drawn comb and brood. Nucs tend to get established faster for beginners.\nDreaming of your first hive? Ask us anything.",h:"#Beekeeping101 #NewBeekeeper #HoneyBees"},
+        {t:"First inspection",type:"cta",p:"On the first calm day above about 60°F, beekeepers open the hive for a quick spring check: is the queen laying, and is there enough food to bridge to the first blooms? A short, gentle peek tells us the colony made it through winter.\nSave this — spring inspections are a big moment in the beeyard. 🐝",h:"#Beekeeping #SpringBees #HoneyBees"},
+        {t:"Pollen means eggs",type:"question",p:"See bees flying in with little colored bundles on their legs? That's pollen, the protein that feeds baby bees — and a sure sign the queen is laying again. Pollen even comes color-coded: bright orange from dandelions, gray-blue from maple.\nEver notice the different pollen colors on a bee's legs?",h:"#BeeFacts #Pollen #HoneyBees"},
+        {t:"Plant for bees",type:"poll",p:"Adding a bee-friendly plant to your yard this spring makes a real difference. Crocus and willow feed the earliest bees, while herbs like thyme and borage keep the buffet going for months.\nWhat would you plant for the bees — flowers, herbs, or a flowering tree?",h:"#BeeFriendly #Pollinators #GardeningPA"},
+        {t:"How we collect a swarm",type:"share",p:"When you call about a swarm, a beekeeper usually just coaxes the gentle cluster into a box and carries it to a new home — no chemicals, no drama. Every swarm saved is a colony that keeps pollinating your neighborhood.\nShare our number with anyone who spots a swarm this spring. 🐝",h:"#BeeSwarm #SaveTheBees #Pollinators"},
+        {t:"Bearding",type:"question",p:"On warm spring and summer evenings you might see bees hanging in a beard-like clump on the front of the hive. They're not leaving — they're just cooling off and making room inside, a normal sign of a strong, growing colony.\nHave you ever seen bees bearding on a hive?",h:"#BeeFacts #Beekeeping #HoneyBees"},
+        {t:"Shelter and water",type:"cta",p:"Early spring is a fragile stretch — the colony is growing fast but the weather still swings cold. A hive placed in morning sun with a windbreak, plus a nearby shallow water source, gives the bees the best start.\nSave this if a spring hive is in your future. 💧",h:"#Beekeeping #SpringBees #SaveTheBees"},
+        {t:"Hive styles",type:"poll",p:"New beekeepers often choose between two hive styles: the stacked-box Langstroth is the classic that makes harvesting honey easy, while the horizontal top-bar hive is lower to work and lets bees build more naturally.\nStacked Langstroth or horizontal top-bar — which appeals to you?",h:"#Beekeeping101 #HoneyBees #Beekeeping"},
+        {t:"How a queen is made",type:"question",p:"A queen isn't born a queen — she starts as an ordinary fertilized egg. The workers simply feed a chosen larva nothing but royal jelly, and that rich diet turns her into a long-lived, egg-laying queen. Diet is destiny in the hive.\nDid you know any worker larva could have become the queen?",h:"#BeeFacts #QueenBee #HoneyBees"}
       ],
       summer:[
         {t:"Nectar flow",type:"question",p:"Summer's 'nectar flow' is when flowers are pumping out nectar and bees are working dawn to dusk to bring it in. Beekeepers add extra boxes called supers to give them room to store all that soon-to-be honey.\nEver wonder how bees decide when to make honey?",h:"#Beekeeping #NectarFlow #Honey"},
@@ -261,7 +303,15 @@ const BIZ = [
         {t:"How much honey",type:"question",p:"To make a single pound of honey, bees visit roughly 2 million flowers and fly the equivalent of twice around the globe. A healthy hive might produce 30–60 pounds of surplus in a good year.\nGuess how many flowers make one jar — did the number surprise you?",h:"#BeeFacts #Honey #HoneyBees"},
         {t:"Heat & water",type:"cta",p:"In a heat wave, bees fan their wings and haul in water to air-condition the hive and keep the brood from overheating. Setting out a shallow water source with landing spots is a simple way to help them through the dog days.\nSave this and put out a bee bath this week. ☀️",h:"#SaveTheBees #SummerBees #Pollinators"},
         {t:"Local honey season",type:"poll",p:"Summer is when local honey supplies build up. Buying from a nearby beekeeper means fresher honey, a taste of your own region's flowers, and direct support for local pollinators.\nHow do you use your honey most — in tea, on toast, or straight off the spoon?",h:"#LocalHoney #ShopLocal #Honey"},
-        {t:"Drones",type:"question",p:"The chunky, big-eyed bees in a summer hive are drones — the males. Their one job is to mate with a queen, and they can't even sting. Come fall, the workers evict them to save resources for winter. Tough crowd.\nDid you know male bees can't sting?",h:"#BeeFacts #HoneyBees #Nature"}
+        {t:"Drones",type:"question",p:"The chunky, big-eyed bees in a summer hive are drones — the males. Their one job is to mate with a queen, and they can't even sting. Come fall, the workers evict them to save resources for winter. Tough crowd.\nDid you know male bees can't sting?",h:"#BeeFacts #HoneyBees #Nature"},
+        {t:"Propolis",type:"question",p:"Bees gather sticky tree resin and turn it into propolis, a natural glue they use to seal drafts and smooth the hive. It's naturally antimicrobial — the bees essentially disinfect their home with it, and people have used it for centuries.\nHad you heard of propolis before?",h:"#BeeFacts #Propolis #HoneyBees"},
+        {t:"Stay calm around bees",type:"cta",p:"If a honeybee checks you out at a cookout, stay calm and still — she's just curious about a sweet smell or bright color and has no interest in stinging. Swatting is what turns a curious scout into a defensive one.\nSave this so the kids know what to do when a bee visits. 🐝",h:"#HoneyBees #BeeSafety #Pollinators"},
+        {t:"Comb vs extracted",type:"poll",p:"Comb honey is exactly as the bees made it — cut straight from the hive, edible wax and all. Extracted honey is spun out of the comb into a jar. Same honey, very different experience on the spoon.\nHave you ever tried honey straight from the comb?",h:"#Honey #CombHoney #LocalHoney"},
+        {t:"Late-summer forage",type:"share",p:"By late summer, flowers can get scarce. Planting sunflowers, mint, borage, or letting a patch of clover bloom gives bees a steady food source right when they need to stock up for winter.\nShare with a gardener friend who wants to help the bees. 🌻",h:"#BeeFriendly #Pollinators #SummerForage"},
+        {t:"Making wax",type:"question",p:"Bees build their comb from wax they secrete from glands on their bellies — and it's costly to make: it takes roughly 8 pounds of honey for bees to produce a single pound of wax. That's why beekeepers reuse good comb.\nCan you believe how much honey one pound of wax costs the hive?",h:"#BeeFacts #Beeswax #HoneyBees"},
+        {t:"Summer ventilation",type:"cta",p:"On scorching days, bees line up and fan their wings to push hot air out and pull cool air in, air-conditioning the whole hive. Beekeepers lend a hand by adding upper vents and making sure fresh water is close by.\nSave this next time you feel a heat wave coming. ☀️",h:"#Beekeeping #SummerBees #HoneyBees"},
+        {t:"Taste the terroir",type:"poll",p:"Local honey is a taste of your own neighborhood — spring honey tends to be light and floral, while late-summer honey turns darker and richer as the flowers change. Same hive, a new flavor every harvest.\nDo you like your honey light and mild or dark and bold?",h:"#LocalHoney #Honey #ShopLocal"},
+        {t:"Worker bee life",type:"question",p:"A summer worker bee lives only about six weeks, and she works her whole life — cleaning, nursing, building, guarding, and finally foraging in her last days. The whole hive runs on that tireless teamwork.\nDid you know a single worker bee changes jobs as she ages?",h:"#BeeFacts #HoneyBees #Nature"}
       ],
       fall:[
         {t:"Mite treatment",type:"cta",p:"Fall is make-or-break for beekeepers: treating hives for varroa mites now is the single biggest factor in whether a colony survives winter. Untreated mites weaken the bees that have to live for months in the cold.\nSave this — it's why fall is such a critical season in the beeyard. 🍯",h:"#Beekeeping #VarroaMites #HoneyBees"},
@@ -271,7 +321,15 @@ const BIZ = [
         {t:"Crystallized honey",type:"question",p:"Honey turned thick and grainy in the jar? It hasn't gone bad — crystallization is completely natural and a sign it's real, raw honey. Warm the jar gently in warm water and it liquefies right back.\nDo you like your honey runny or set and creamy?",h:"#Honey #RawHoney #BeeFacts"},
         {t:"Leave them honey",type:"cta",p:"Responsible beekeepers only harvest the surplus and leave the colony plenty of honey — often 60+ pounds — to eat through winter. Bees that starve in February don't pollinate in April.\nSave this next time you wonder why local honey costs a bit more. 🐝",h:"#Beekeeping #LocalHoney #SaveTheBees"},
         {t:"Creamed honey",type:"poll",p:"Creamed (or 'whipped') honey isn't whipped with air — it's crystallized in a controlled way so the crystals stay tiny and spreadable, like honey butter. Same honey, silkier texture.\nSpreadable creamed honey or classic liquid gold?",h:"#Honey #CreamedHoney #LocalHoney"},
-        {t:"Robbing season",type:"question",p:"When flowers fade in fall, bees may try to raid weaker hives for honey — beekeepers call it 'robbing.' It's why we get careful about leaving honey exposed this time of year. Nature gets competitive when food runs short.\nHad any idea bees would rob each other?",h:"#BeeFacts #Beekeeping #HoneyBees"}
+        {t:"Robbing season",type:"question",p:"When flowers fade in fall, bees may try to raid weaker hives for honey — beekeepers call it 'robbing.' It's why we get careful about leaving honey exposed this time of year. Nature gets competitive when food runs short.\nHad any idea bees would rob each other?",h:"#BeeFacts #Beekeeping #HoneyBees"},
+        {t:"Drones evicted",type:"question",p:"Come fall, the colony makes a hard call: the male drones, who don't gather food or help with winter, get pushed out of the hive to conserve the honey stores. It sounds harsh, but it's how the colony survives to spring.\nDid you know the hive downsizes for winter?",h:"#BeeFacts #HoneyBees #Beekeeping"},
+        {t:"Fall feeding",type:"cta",p:"If a colony's honey stores look light heading into fall, beekeepers feed a thicker sugar syrup to help them top off the pantry before cold weather locks them inside. A well-stocked hive is a hive that survives winter.\nSave this — fall is all about getting bees ready for the cold. 🍯",h:"#Beekeeping #FallBees #HoneyBees"},
+        {t:"Goldenrod honey",type:"poll",p:"Late-season goldenrod gives a bold, amber honey with a distinctive smell right in the hive — some love its rich flavor, others prefer a lighter spring honey. It's a big part of what fills the bees' winter pantry.\nGoldenrod honey: rich and lovely, or a little too bold?",h:"#Honey #FallForage #LocalHoney"},
+        {t:"Fall forage matters",type:"share",p:"On warm fall days bees are still out foraging every bloom they can find. Leaving asters, goldenrod, and other late flowers standing — and a little water out — helps them make the most of the season's last meals.\nShare with a friend before they mow down the fall flowers. 🌼",h:"#Pollinators #SaveTheBees #FallForage"},
+        {t:"Enough for winter",type:"question",p:"A honeybee colony in our area needs roughly 60 pounds of honey to survive a Pennsylvania winter. Beekeepers weigh or heft the hive in fall to make sure the bees have packed away enough to last until spring.\nGuess how much honey a hive needs to winter over — surprised?",h:"#BeeFacts #Beekeeping #WinterBees"},
+        {t:"Mouse guards",type:"cta",p:"As it cools, mice try to move into the warm, food-filled hive for winter — so beekeepers fit a small mouse guard over the entrance. It lets the bees come and go while keeping unwanted roommates out.\nSave this bit of fall hive prep. 🐭",h:"#Beekeeping #FallBees #HoneyBees"},
+        {t:"Beeswax gifts",type:"poll",p:"Fall is a lovely time to enjoy the hive's other gift: beeswax. Clean-burning candles, nourishing lip balm, and wood polish all start with the wax bees build their comb from.\nBeeswax candles or beeswax lip balm — which would you reach for?",h:"#Beeswax #Beekeeping #ShopLocal"},
+        {t:"Winter bees",type:"question",p:"The bees raised in fall are special — they're born with extra fat stores and can live for months, not weeks, so they can keep the colony warm all winter. That's why controlling mites in fall matters so much: healthy fall bees mean a living spring hive.\nDid you know winter bees live far longer than summer ones?",h:"#BeeFacts #WinterBees #Beekeeping"}
       ],
       winter:[
         {t:"The winter cluster",type:"question",p:"Right now, our bees are huddled in a ball inside the hive, shivering to stay warm and slowly rotating so no one on the outside gets too cold. They'll keep the core toasty all winter on stored honey alone — no hibernation, no heater.\nAmazing what they pull off in the cold, right?",h:"#WinterBees #BeeFacts #HoneyBees"},
@@ -281,7 +339,15 @@ const BIZ = [
         {t:"Where's the queen",type:"question",p:"Through winter the queen sits right in the warm heart of the cluster, kept snug by her daughters. She takes a break from laying in the coldest weeks, then starts again in late winter so the colony is ready to grow when spring arrives.\nEver wonder what the queen does all winter?",h:"#BeeFacts #QueenBee #HoneyBees"},
         {t:"Beeswax uses",type:"cta",p:"Beeswax is a beautiful byproduct of the hive — bees secrete it to build comb. It's perfect for clean-burning candles, wood polish, lip balm, and waxed food wraps. A little goes a long way.\nSave this if you'd love to try a beeswax project this winter. 🕯️",h:"#Beeswax #Beekeeping #DIY"},
         {t:"Honey in baking",type:"poll",p:"Baking with honey adds moisture and a lovely depth grocery sugar can't match. It works beautifully in breads, granola, glazes, and cookies — just reduce other liquids a touch.\nWhat's your favorite thing to make with honey?",h:"#Honey #Baking #LocalHoney"},
-        {t:"Plan your first hive",type:"question",p:"Winter is when beekeepers plan for spring — and it's when new hives get reserved, because bee suppliers sell out early. If keeping bees has been on your list, now's the time to learn and get on a list.\nIs this the year you finally start a hive?",h:"#Beekeeping101 #NewBeekeeper #Beekeeping"}
+        {t:"Plan your first hive",type:"question",p:"Winter is when beekeepers plan for spring — and it's when new hives get reserved, because bee suppliers sell out early. If keeping bees has been on your list, now's the time to learn and get on a list.\nIs this the year you finally start a hive?",h:"#Beekeeping101 #NewBeekeeper #Beekeeping"},
+        {t:"Cleansing flights",type:"question",p:"Honeybees are tidy — they won't go to the bathroom inside the hive. On the rare mild, sunny winter day, you'll see them zip out for a quick cleansing flight and hurry right back to the warm cluster.\nDid you know bees hold it all winter to keep a clean hive?",h:"#BeeFacts #WinterBees #HoneyBees"},
+        {t:"Don't peek",type:"cta",p:"In winter, beekeepers resist the urge to open the hive. Every time the lid comes off, precious heat escapes and the cluster has to work harder to recover. We watch from the outside and trust the bees to do their thing.\nSave this — sometimes the best beekeeping is leaving them be. ❄️",h:"#Beekeeping #WinterBees #HoneyBees"},
+        {t:"Honey in your cup",type:"poll",p:"Winter is peak cozy-drink season, and local honey shines in both — mellow and smooth stirred into coffee, bright and floral in a cup of tea. Either way you're tasting summer in a mug.\nHoney in coffee or honey in tea — settle it for us. ☕",h:"#LocalHoney #Honey #WinterComfort"},
+        {t:"Support local hives",type:"share",p:"Winter is quiet in the beeyard but the bills don't stop — buying local honey and beeswax now helps beekeepers keep their colonies healthy for another season of pollinating your gardens and farms.\nShare with someone who wants to support local this winter. 🍯",h:"#LocalHoney #ShopLocal #SaveTheBees"},
+        {t:"Hefting the hive",type:"question",p:"You can't open a hive in the cold, so beekeepers gently lift the back of it — a heavy hive means plenty of honey left, a light one means the bees may need help. It's a simple check that can save a colony.\nEver think you could weigh a beehive by hand?",h:"#Beekeeping #WinterBees #BeeFacts"},
+        {t:"Order bees early",type:"cta",p:"Dreaming of keeping bees? Winter is when you learn, gather gear, and reserve your colony — because bee suppliers sell out early, often by late winter. A little planning now means bees buzzing in your yard by spring.\nSave this if this is your year to start. 🐝",h:"#Beekeeping101 #NewBeekeeper #Beekeeping"},
+        {t:"Honey varieties",type:"poll",p:"Not all honey tastes the same — clover is light and mild, wildflower shifts with the season, goldenrod is bold, and buckwheat is dark and molasses-rich. Winter is a great time to taste your way through a few.\nWhat's your all-time favorite honey variety?",h:"#Honey #LocalHoney #Beekeeping"},
+        {t:"Honey never spoils",type:"question",p:"Pure honey basically never goes bad — archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible. Its low moisture and natural acidity keep it safe practically forever, no fridge required.\nCan you believe honey can outlast the centuries?",h:"#BeeFacts #Honey #HoneyBees"}
       ]
     }
   },
@@ -297,7 +363,15 @@ const BIZ = [
         {t:"Bouquet freshness",type:"question",p:"To keep your bouquet looking fresh on the wedding day, keep it out of direct sun and heat and give the stems a drink of water whenever you set it down. A good florist also conditions the flowers for days beforehand so they peak on the day.\nWhat spring colors are you leaning toward?",h:"#WeddingFlorist #BridalBouquet #WeddingTips"},
         {t:"Seasonal is smart",type:"cta",p:"Choosing flowers that are in season means fresher blooms, better prices, and a lower footprint — because they haven't been shipped across the world. Ask your florist what's blooming beautifully for your date.\nSave this tip for your florist consultation. 🌷",h:"#SeasonalFlowers #WeddingFlorist #SustainableWedding"},
         {t:"Bud vase vs lush",type:"poll",p:"Two centerpiece styles: clusters of simple bud vases feel airy, modern, and budget-friendly, while a single lush arrangement makes a bold romantic statement. Both can look stunning down a long table.\nBud vases or one lush centerpiece — what's your vibe?",h:"#WeddingDecor #Centerpieces #WeddingFlowers"},
-        {t:"Floral moments",type:"question",p:"A floral 'moment' or installation is a statement piece — a flower-draped arch, a hanging cloud over the head table, a wall of greenery for photos. Even one big moment can transform an entire venue.\nWhere would you put your one big floral moment?",h:"#WeddingFlorist #FloralDesign #WeddingInspo"}
+        {t:"Floral moments",type:"question",p:"A floral 'moment' or installation is a statement piece — a flower-draped arch, a hanging cloud over the head table, a wall of greenery for photos. Even one big moment can transform an entire venue.\nWhere would you put your one big floral moment?",h:"#WeddingFlorist #FloralDesign #WeddingInspo"},
+        {t:"Tulips keep growing",type:"question",p:"Fun florist fact: tulips keep growing and bending toward the light even after they're cut, sometimes an inch or more in the vase. It's why a tulip arrangement looks a little different — and lovely — each morning.\nDid you know cut tulips are still moving and growing?",h:"#WeddingFlowers #Tulips #SpringWedding"},
+        {t:"Book shower florals",type:"cta",p:"Wedding flowers get the spotlight, but engagement parties and bridal showers deserve blooms too. Booking these smaller spring florals early means your florist can weave a consistent look across all your celebrations.\nSave this and think beyond just the wedding day. 💐",h:"#BridalShower #WeddingFlorist #WeddingPlanning"},
+        {t:"Pastel vs vibrant",type:"poll",p:"Spring palettes swing two ways: soft pastels — blush, butter, lavender — feel dreamy and romantic, while vibrant tulips and ranunculus in bold color feel fresh and full of joy.\nSoft spring pastels or bright and bold — which is your bouquet?",h:"#WeddingColors #SpringWedding #WeddingFlowers"},
+        {t:"Double-duty bouquets",type:"share",p:"Here's a pretty budget trick: set your bridesmaids' bouquets in vases on the head or cake table at the reception. They've already been chosen to match, so they instantly become centerpieces.\nShare with a friend planning her flowers. 💍",h:"#WeddingTips #BudgetWedding #WeddingFlowers"},
+        {t:"Fragrant blooms",type:"question",p:"Some spring flowers do double duty — lilac, hyacinth, sweet pea, and garden roses fill the air with scent as well as beauty. A fragrant bouquet adds a whole extra layer of memory to the day.\nWould you want your bouquet to be fragrant, or keep it scent-free?",h:"#WeddingFlowers #SpringWedding #BridalBouquet"},
+        {t:"Local spring stems",type:"cta",p:"Spring is when local growers overflow with tulips, daffodils, and ranunculus. Choosing what's grown nearby means fresher, longer-lasting flowers and support for Pennsylvania farms.\nSave this and ask your florist what's blooming locally. 🌷",h:"#LocalFlowers #SeasonalFlowers #SpringWedding"},
+        {t:"Round vs cascade",type:"poll",p:"Two timeless bouquet shapes: a neat round posy feels classic and easy to hold, while a cascading bouquet spills downward for a romantic, dramatic look in photos. Both are gorgeous down the aisle.\nRound and tidy or flowing cascade — what suits your vision?",h:"#BridalBouquet #WeddingFlowers #WeddingStyle"},
+        {t:"Flower crowns",type:"question",p:"Flower crowns are a spring favorite for brides and flower girls. To keep one fresh all day, it's built on sturdy little blooms and misted before you wear it — delicate flowers wilt fast up in the warmth of your hair.\nWould you wear a flower crown on your big day?",h:"#FlowerCrown #SpringWedding #WeddingFlowers"}
       ],
       summer:[
         {t:"Heat-hardy blooms",type:"question",p:"For a hot outdoor wedding, some flowers hold up far better than others. Dahlias, zinnias, sunflowers, and greenery take the heat well, while delicate blooms can wilt fast in direct summer sun.\nPlanning an outdoor summer wedding? What's your color palette?",h:"#SummerWedding #WeddingFlowers #Dahlias"},
@@ -307,7 +381,15 @@ const BIZ = [
         {t:"Flower meanings",type:"question",p:"Flowers carry meaning: roses for love, peonies for a happy marriage, lavender for devotion, and sunflowers for loyalty and warmth. Weaving in a meaningful bloom makes your bouquet extra personal.\nIs there a flower with special meaning for you two?",h:"#WeddingFlowers #FlowerMeanings #WeddingInspo"},
         {t:"Hydrate your stems",type:"cta",p:"Cut flowers drink a surprising amount. Whether it's your bouquet or DIY centerpieces, recut the stems at an angle and get them in fresh water fast — clean water and a cool spot can add days of life.\nSave this for any flowers you're handling yourself. 💧",h:"#FlowerCare #WeddingTips #WeddingFlowers"},
         {t:"White vs bold",type:"poll",p:"Summer palettes go two ways: crisp all-white-and-greenery feels timeless and elegant, while bold brights — corals, magentas, sunny yellows — feel joyful and full of life.\nClassic white or bold summer color — which speaks to you?",h:"#WeddingColors #SummerWedding #WeddingFlowers"},
-        {t:"Boutonniere care",type:"question",p:"Boutonnieres are tiny but mighty. Keep them cool until go-time, pin them stem-down through the lapel, and mist lightly to keep them perky through the ceremony and photos.\nGoing classic rose, or something unexpected for the boutonnieres?",h:"#Boutonniere #WeddingFlowers #GroomStyle"}
+        {t:"Boutonniere care",type:"question",p:"Boutonnieres are tiny but mighty. Keep them cool until go-time, pin them stem-down through the lapel, and mist lightly to keep them perky through the ceremony and photos.\nGoing classic rose, or something unexpected for the boutonnieres?",h:"#Boutonniere #WeddingFlowers #GroomStyle"},
+        {t:"Long-lasting blooms",type:"question",p:"For a hot day, some flowers are marathon runners — alstroemeria, carnations, and chrysanthemums hold up beautifully for hours out of water. Mixing a few of these in keeps your arrangements looking fresh through the reception.\nWant help picking blooms that last all day?",h:"#WeddingFlowers #SummerWedding #FloralDesign"},
+        {t:"Chill the flowers",type:"cta",p:"On a warm wedding day, tuck boutonnieres, corsages, and bouquets into a cool fridge (not the freezer) the night before and until go-time. A few hours of chill keeps petals crisp when the temperature climbs.\nSave this for your summer wedding timeline. ❄️",h:"#WeddingTips #SummerWedding #FlowerCare"},
+        {t:"Arch vs petals",type:"poll",p:"Where should the flowers make their big statement? A lush floral arch frames your vows and every ceremony photo, while an aisle lined with petals is simple, romantic, and budget-friendly.\nStatement arch or petal-lined aisle — where's your splurge?",h:"#WeddingFlowers #WeddingCeremony #WeddingDecor"},
+        {t:"Greenery stretches budget",type:"share",p:"Lush greenery like eucalyptus and ivy costs less than an all-flower look but still feels full and romantic, especially with candlelight. Mixing greenery with a few focal blooms is a florist's favorite budget move.\nShare with a friend balancing flowers and budget. 🌿",h:"#BudgetWedding #WeddingDecor #WeddingFlowers"},
+        {t:"Flowers and bugs",type:"question",p:"Outdoor summer weddings sometimes attract a few uninvited guests, and very sweet, fragrant flowers can draw bees. A good florist plans around it with the right blooms and placement so your day stays sweet — minus the buzzing.\nPlanning an outdoor summer celebration?",h:"#SummerWedding #WeddingFlowers #WeddingTips"},
+        {t:"Hydration plan",type:"cta",p:"Heat is a bouquet's enemy, so build in a hydration plan: a hidden water source in the bouquet holder, a shady spot to set flowers down, and a quick misting before photos. Little steps keep blooms perky in July sun.\nSave this so your flowers survive the heat. 💧",h:"#FlowerCare #SummerWedding #BridalBouquet"},
+        {t:"Baby's breath debate",type:"poll",p:"Baby's breath is having a moment again — clouds of it look airy and romantic and it's wonderfully budget-friendly, though some feel it's been overdone. Used with intention, it can be stunning.\nBaby's breath: timeless charm or a hard pass?",h:"#WeddingFlowers #BabysBreath #WeddingDecor"},
+        {t:"Toss vs keepsake",type:"question",p:"Many brides carry two bouquets: the beautiful one they keep and preserve, and a smaller, sturdier toss bouquet for the crowd. That way your keepsake blooms never take an unexpected flight.\nWill you do a bouquet toss, or keep every stem?",h:"#BridalBouquet #WeddingTraditions #WeddingFlowers"}
       ],
       fall:[
         {t:"Fall palette",type:"question",p:"Fall weddings get the richest flowers of the year — dahlias, mums, and marigolds in deep burgundy, rust, and gold, mixed with dried grasses and textured greenery. The whole season feels warm and moody.\nAre you drawn to fall's burgundy-and-gold tones?",h:"#FallWedding #WeddingFlowers #Dahlias"},
@@ -317,7 +399,15 @@ const BIZ = [
         {t:"Foliage & branches",type:"question",p:"Fall is the one time of year to lean into gorgeous foliage — colored oak and maple branches, seeded eucalyptus, and berries add drama and texture that fresh flowers alone can't.\nWould you want autumn branches worked into your florals?",h:"#FallWedding #WeddingFlorist #FloralDesign"},
         {t:"Local fall stems",type:"cta",p:"Fall is prime time for locally grown blooms — dahlias, celosia, and zinnias are at their peak here in PA. Local means fresher, longer-lasting flowers and support for nearby growers.\nSave this and ask your florist what's growing locally. 🌼",h:"#LocalFlowers #FallWedding #SeasonalFlowers"},
         {t:"Pumpkins in decor",type:"poll",p:"Little heirloom and white pumpkins can be a charming, budget-friendly accent among fall florals — or they can tip into 'too much.' Used sparingly with elegant blooms, they add a seasonal wink.\nPumpkins in the wedding decor: yes, or hard pass?",h:"#FallWedding #WeddingDecor #AutumnWedding"},
-        {t:"Preserve your bouquet",type:"question",p:"Want to keep your bouquet forever? Fall couples love pressing or air-drying their flowers, or having them professionally preserved in resin or a frame. Ask early so the process is ready right after the big day.\nWould you preserve your bouquet as a keepsake?",h:"#BridalBouquet #DriedFlowers #WeddingKeepsake"}
+        {t:"Preserve your bouquet",type:"question",p:"Want to keep your bouquet forever? Fall couples love pressing or air-drying their flowers, or having them professionally preserved in resin or a frame. Ask early so the process is ready right after the big day.\nWould you preserve your bouquet as a keepsake?",h:"#BridalBouquet #DriedFlowers #WeddingKeepsake"},
+        {t:"Chrysanthemum queen",type:"question",p:"The humble chrysanthemum is a fall wedding secret weapon — it comes in the season's richest colors, lasts remarkably long, and won't strain the budget. Modern spider and football mums look nothing like the grocery-store version.\nWould you welcome mums into your fall florals?",h:"#FallWedding #Chrysanthemums #WeddingFlowers"},
+        {t:"Book the golden hour",type:"cta",p:"Fall light is magic, and it fades fast. Coordinating your florist and photographer around that golden hour means your blooms glow their richest in photos. A quick chat between vendors makes all the difference.\nSave this fall-wedding planning tip. 🍂",h:"#FallWedding #WeddingPlanning #WeddingFlorist"},
+        {t:"Texture vs blooms",type:"poll",p:"Fall lets you play with texture — wheat, dried grasses, seed pods, and berries mixed among the flowers give an organic, gathered feel, versus a classic all-blooms bouquet that's lush and full.\nTextured and wild or classic all-flowers for fall?",h:"#FallWedding #WeddingFlowers #FloralDesign"},
+        {t:"Dry your centerpieces",type:"share",p:"Fall flowers like strawflower, celosia, and grasses dry beautifully. Ask your florist which centerpiece blooms will last, and you can hang them to dry and enjoy your wedding flowers as home decor for months.\nShare with a friend who hates to see the flowers go. 🌾",h:"#DriedFlowers #FallWedding #WeddingKeepsake"},
+        {t:"Marigold meaning",type:"question",p:"Marigolds bring more than warm color to a fall wedding — in many cultures they symbolize celebration, warmth, and remembrance, which makes them a meaningful way to honor loved ones in your florals.\nIs there a bloom with special meaning for your family?",h:"#FallWedding #FlowerMeanings #WeddingFlowers"},
+        {t:"All-day wearables",type:"cta",p:"Boutonnieres and corsages take a beating through a long fall celebration. Ask for hardy, wearable blooms — spray roses, mums, and greenery — that still look sharp from first look to last dance.\nSave this so your wearable flowers go the distance. 🌼",h:"#Boutonniere #FallWedding #WeddingFlowers"},
+        {t:"Copper vs greenery",type:"poll",p:"Fall accents set the mood: warm copper and gold feel lush and glam, while trailing greenery keeps things natural and earthy. Both pair beautifully with the season's deep-toned blooms.\nCopper-and-gold glam or organic greenery for your fall tables?",h:"#WeddingDecor #FallWedding #WeddingColors"},
+        {t:"Order lead time",type:"question",p:"Ever wonder how far ahead wedding flowers are ordered? Florists often reserve specific blooms months in advance and place final orders a couple weeks out, so early planning is what secures your exact fall palette.\nHave you started your florals conversation yet?",h:"#WeddingPlanning #WeddingFlorist #FallWedding"}
       ],
       winter:[
         {t:"Winter blooms",type:"question",p:"Winter weddings have their own magic. Amaryllis, anemones, ranunculus, and fragrant evergreens create a cozy, elegant look — think jewel tones or crisp white-and-green against candlelight.\nDreaming of a winter wedding? What's your color story?",h:"#WinterWedding #WeddingFlowers #Anemones"},
@@ -327,7 +417,15 @@ const BIZ = [
         {t:"Winter flower cost",type:"question",p:"Do flowers cost more in winter? Some do — certain blooms are imported when they're out of season. The savvy move is choosing what's naturally available in winter, like amaryllis, evergreens, and ranunculus, for the best value.\nWant help picking beautiful in-season winter blooms?",h:"#WinterWedding #WeddingFlorist #SeasonalFlowers"},
         {t:"Book holiday dates",type:"cta",p:"Winter and holiday-season weddings are more popular than ever, and florists juggle events plus holiday orders. If your date is anywhere near the holidays, reserve your florals well ahead.\nSave this and get your winter date booked early. 💐",h:"#WinterWedding #WeddingPlanning #WeddingFlorist"},
         {t:"Garland vs runner",type:"poll",p:"Down a long reception table, a lush evergreen or eucalyptus garland feels organic and cozy, while a full floral runner feels lavish and romantic. Both frame your table beautifully.\nGreenery garland or floral runner for the head table?",h:"#WeddingDecor #WinterWedding #Centerpieces"},
-        {t:"Press your bouquet",type:"question",p:"Winter bouquets full of ranunculus and greenery press and dry beautifully. Preserving yours — pressed in a frame or dried whole — turns your flowers into a keepsake you'll have long after the last dance.\nWould you keep your bouquet as art on the wall?",h:"#BridalBouquet #WeddingKeepsake #DriedFlowers"}
+        {t:"Press your bouquet",type:"question",p:"Winter bouquets full of ranunculus and greenery press and dry beautifully. Preserving yours — pressed in a frame or dried whole — turns your flowers into a keepsake you'll have long after the last dance.\nWould you keep your bouquet as art on the wall?",h:"#BridalBouquet #WeddingKeepsake #DriedFlowers"},
+        {t:"Winter showstoppers",type:"question",p:"Winter has its own showstoppers — towering amaryllis and fragrant paperwhites bring drama and elegance no other season offers, especially against candlelight and evergreens.\nDreaming of a dramatic winter bloom in your bouquet?",h:"#WinterWedding #Amaryllis #WeddingFlowers"},
+        {t:"Scented greenery",type:"cta",p:"For a cozy winter wedding, lean into scented greenery — pine, cedar, and eucalyptus fill a room with a fresh, wintry aroma and stretch your florals further at the same time.\nSave this for a warm, fragrant winter celebration. 🌲",h:"#WinterWedding #WeddingDecor #WeddingFlowers"},
+        {t:"Velvet vs satin",type:"poll",p:"Little details set the tone: a wrap of velvet ribbon on your bouquet feels rich and wintry, while satin keeps things sleek and classic. Both look beautiful trailing from winter blooms.\nVelvet or satin ribbon for a winter bouquet?",h:"#WinterWedding #BridalBouquet #WeddingDetails"},
+        {t:"Repurpose holiday blooms",type:"share",p:"Marrying near the holidays? Venues are often already decked with greenery and lights, so you can lean on that and spend your floral budget where it counts most — your bouquet and head table.\nShare with a friend planning a holiday-season wedding. ✨",h:"#WinterWedding #BudgetWedding #WeddingDecor"},
+        {t:"Cool venues help",type:"question",p:"Good news for winter couples: cooler venues actually help flowers last longer, so your blooms stay fresh from ceremony to send-off with far less wilting than a summer wedding.\nHaving a cozy indoor winter wedding?",h:"#WinterWedding #FlowerCare #WeddingFlowers"},
+        {t:"Reserve early",type:"cta",p:"Winter dates near the holidays fill a florist's calendar fast, between weddings and seasonal orders. Reserving your flowers well ahead is the best way to lock in both your date and your dream blooms.\nSave this and get your winter date booked. 💐",h:"#WinterWedding #WeddingPlanning #WeddingFlorist"},
+        {t:"White vs jewel",type:"poll",p:"Two stunning winter directions: crisp all-white with greenery feels like fresh snow and timeless elegance, while deep jewel tones — emerald, plum, garnet — feel rich, warm, and romantic by candlelight.\nSnowy white or jewel tones for your winter wedding?",h:"#WinterWedding #WeddingColors #WeddingFlowers"},
+        {t:"Preserve the greenery",type:"question",p:"Winter keepsakes aren't just flowers — sprigs of eucalyptus, cedar, and berries press and dry wonderfully, so you can frame a piece of your wintry bouquet to keep long after the last dance.\nWould you preserve a piece of your winter florals?",h:"#WeddingKeepsake #DriedFlowers #WinterWedding"}
       ]
     }
   }
@@ -372,6 +470,33 @@ function weekOptions(){
 }
 const WEEKS = weekOptions();
 
+// All Mondays whose week belongs to a given month
+const MONTHFULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+function mondaysOfMonth(y, m0){
+  const res = [];
+  let d = mondayOf(new Date(y, m0, 1));
+  if (d.getMonth() !== m0 || d.getFullYear() !== y) d = addDays(d, 7);
+  while (d.getMonth() === m0 && d.getFullYear() === y){ res.push(new Date(d)); d = addDays(d, 7); }
+  return res;
+}
+// Next 6 months (this month first)
+function monthOptions(){
+  const now = new Date(); const out = [];
+  for (let i=0;i<6;i++){
+    const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
+    out.push({ key:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`, y:d.getFullYear(), m0:d.getMonth(),
+      label:`All of ${MONTHFULL[d.getMonth()]} ${d.getFullYear()}` });
+  }
+  return out;
+}
+const MONTHOPTS = monthOptions();
+
+function optionsHtml(){
+  const wk = WEEKS.map(w=>`<option value="week:${w.key}">${esc(w.label)}</option>`).join("");
+  const mo = MONTHOPTS.map(m=>`<option value="month:${m.key}">${esc(m.label)}</option>`).join("");
+  return `<optgroup label="One week at a time">${wk}</optgroup><optgroup label="A whole month at once">${mo}</optgroup>`;
+}
+
 /* ---------- Selection logic (no repeats until pool used up) ---------- */
 function loadJSON(k, fallback){ try{ return JSON.parse(localStorage.getItem(k)) ?? fallback; }catch{ return fallback; } }
 function saveJSON(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch{} }
@@ -409,7 +534,6 @@ const TYPE_LABEL = { question:"❓ Question", cta:"📌 Save / Share", poll:"�
 function render(){
   const main = document.getElementById("main");
   main.innerHTML = BIZ.map(biz => {
-    const opts = WEEKS.map(w=>`<option value="${w.key}">${esc(w.label)}</option>`).join("");
     return `
     <section class="panel" data-biz="${biz.id}" aria-labelledby="h-${biz.id}">
       <div class="phead">
@@ -418,17 +542,17 @@ function render(){
         <div class="sub">🔗 ${esc(biz.site)} · Harrisburg, PA</div>
       </div>
       <div class="controls">
-        <label for="wk-${biz.id}">Pick the week to post:</label>
+        <label for="wk-${biz.id}">Pick a week — or a whole month:</label>
         <div class="row">
           <select id="wk-${biz.id}" data-biz="${biz.id}"></select>
-          <button type="button" class="gen" data-biz="${biz.id}" data-act="gen">✨ Generate 2 posts</button>
+          <button type="button" class="gen" data-biz="${biz.id}" data-act="gen">✨ Generate posts</button>
         </div>
         <p class="hint" id="hint-${biz.id}"></p>
       </div>
       <div class="posts" id="posts-${biz.id}" aria-live="polite">
         <div class="empty">
           <div class="big" aria-hidden="true">${biz.emoji}</div>
-          Pick a week above and tap <strong>Generate 2 posts</strong>.
+          Pick a week or month above and tap <strong>Generate posts</strong>.
         </div>
       </div>
     </section>`;
@@ -437,76 +561,109 @@ function render(){
   // wire selects + hints
   BIZ.forEach(biz=>{
     const sel = document.getElementById(`wk-${biz.id}`);
-    sel.innerHTML = WEEKS.map(w=>`<option value="${w.key}">${esc(w.label)}</option>`).join("");
+    sel.innerHTML = optionsHtml();
     updateHint(biz.id);
     sel.addEventListener("change", ()=>{ updateHint(biz.id); showSaved(biz.id); });
     showSaved(biz.id);
   });
 }
 
-function selectedWeek(bizId){
-  const key = document.getElementById(`wk-${bizId}`).value;
-  return WEEKS.find(w=>w.key===key) || WEEKS[0];
-}
-function updateHint(bizId){
-  const w = selectedWeek(bizId);
-  document.getElementById(`hint-${bizId}`).textContent =
-    `You'll get a Monday post (${fmt(w.mon)}) and a Friday post (${fmt(w.fri)}).`;
+function currentValue(bizId){ return document.getElementById(`wk-${bizId}`).value; }
+function parseTarget(val){ const i = val.indexOf(":"); return { mode: val.slice(0,i), key: val.slice(i+1) }; }
+
+// Build 2 serialized post-slots for one week
+function makeWeekSlots(bizId, mon, fri){
+  const season = seasonOf(mon);
+  const idxs = pickPosts(bizId, season, 2);
+  return { mon, fri, slots:[
+    { dayLabel:"Monday", dateStr:fmt(mon), season, idx:idxs[0] },
+    { dayLabel:"Friday", dateStr:fmt(fri), season, idx:idxs[1] }
+  ]};
 }
 
-function renderPosts(bizId, indices){
-  const biz = BIZ.find(b=>b.id===bizId);
-  const w = selectedWeek(bizId);
-  const season = seasonOf(w.mon);
-  const pool = biz.lib[season];
-  const days = [{lbl:"Monday", d:w.mon},{lbl:"Friday", d:w.fri}];
-  const cardsHtml = indices.map((idx,i)=>{
-    const post = pool[idx];
-    const day = days[i] || days[0];
-    return `
+// Build the full serialized "store" for whatever is selected
+function buildStore(bizId){
+  const { mode, key } = parseTarget(currentValue(bizId));
+  if (mode === "month"){
+    const [y,m] = key.split("-").map(Number);
+    const mondays = mondaysOfMonth(y, m-1);
+    const weeks = mondays.map(mon=>{
+      const w = makeWeekSlots(bizId, mon, addDays(mon,4));
+      return { header:`Week of ${MON[mon.getMonth()]} ${mon.getDate()}`, slots:w.slots };
+    });
+    return { mode, label:`All of ${MONTHFULL[m-1]} ${y}`, weeks };
+  }
+  const wk = WEEKS.find(x=>x.key===key) || WEEKS[0];
+  const w = makeWeekSlots(bizId, wk.mon, wk.fri);
+  return { mode, label:wk.label, weeks:[{ header:null, slots:w.slots }] };
+}
+
+function updateHint(bizId){
+  const { mode, key } = parseTarget(currentValue(bizId));
+  const el = document.getElementById(`hint-${bizId}`);
+  if (mode === "month"){
+    const [y,m] = key.split("-").map(Number);
+    const n = mondaysOfMonth(y, m-1).length;
+    el.textContent = `You'll get 2 posts a week (Monday & Friday) for every week in ${MONTHFULL[m-1]} — ${n*2} posts in total.`;
+  } else {
+    const w = WEEKS.find(x=>x.key===key) || WEEKS[0];
+    el.textContent = `You'll get a Monday post (${fmt(w.mon)}) and a Friday post (${fmt(w.fri)}).`;
+  }
+}
+
+function cardHtml(bizId, biz, post, dayLabel, dateStr){
+  return `
       <div class="postcard">
         <div class="pc-top">
-          <span class="datechip">${day.lbl} · ${fmt(day.d)}</span>
+          <span class="datechip">${dayLabel} · ${dateStr}</span>
           <span class="badge ${post.type}">${TYPE_LABEL[post.type]}</span>
           <span class="topic">Topic: ${esc(post.t)}</span>
         </div>
         <p class="body">${esc(post.p)}</p>
         <p class="tags">${esc(post.h)} ${esc(biz.base)}</p>
-        <button type="button" class="copy" data-biz="${bizId}" data-idx="${idx}" data-day="${i}"
-                aria-label="Copy the ${day.lbl} post for ${esc(biz.name)}">📋 Copy post</button>
+        <button type="button" class="copy" data-biz="${bizId}" data-season="${esc(post.__season)}" data-idx="${post.__idx}"
+                aria-label="Copy the ${dayLabel} ${dateStr} post for ${esc(biz.name)}">📋 Copy post</button>
       </div>`;
-  }).join("");
-
-  const box = document.getElementById(`posts-${bizId}`);
-  box.classList.add("show");
-  box.innerHTML = `
-    <p class="lead">Tap <strong>📋 Copy post</strong>, then paste it into Meta Business Suite Planner for that date.</p>
-    ${cardsHtml}
-    <div class="postactions">
-      <button type="button" class="newset" data-biz="${bizId}" data-act="new">🔄 Give me a different set</button>
-    </div>`;
 }
 
-function generate(bizId, remember){
-  const w = selectedWeek(bizId);
-  const season = seasonOf(w.mon);
-  const indices = pickPosts(bizId, season, 2);
-  saveJSON(`sel:${bizId}:${w.key}`, indices);
-  renderPosts(bizId, indices);
+function renderStore(bizId, store){
   const biz = BIZ.find(b=>b.id===bizId);
-  announce(`Generated 2 ${season} posts for ${biz.name}, for the week of ${fmt(w.mon)}.`);
+  const total = store.weeks.reduce((n,w)=>n+w.slots.length, 0);
+  let html = `<p class="lead">Tap <strong>📋 Copy post</strong>, then paste it into Meta Business Suite Planner for that date.` +
+    (store.weeks.length>1 ? ` That's <strong>${total} posts</strong> for ${esc(store.label.replace(/^All of /,""))}.` : ``) + `</p>`;
+  store.weeks.forEach(w=>{
+    if (w.header) html += `<h3 class="weekhead">${esc(w.header)}</h3>`;
+    w.slots.forEach(s=>{
+      const post = Object.assign({ __season:s.season, __idx:s.idx }, biz.lib[s.season][s.idx]);
+      html += cardHtml(bizId, biz, post, s.dayLabel, s.dateStr);
+    });
+  });
+  html += `<div class="postactions">
+      <button type="button" class="newset" data-biz="${bizId}" data-act="new">🔄 Give me a different set</button>
+    </div>`;
+  const box = document.getElementById(`posts-${bizId}`);
+  box.classList.add("show");
+  box.innerHTML = html;
+}
+
+function generate(bizId){
+  const store = buildStore(bizId);
+  saveJSON(`gen:${bizId}:${currentValue(bizId)}`, store);
+  renderStore(bizId, store);
+  const biz = BIZ.find(b=>b.id===bizId);
+  const total = store.weeks.reduce((n,w)=>n+w.slots.length, 0);
+  announce(`Generated ${total} posts for ${biz.name} — ${store.label}.`);
 }
 
 function showSaved(bizId){
-  const w = selectedWeek(bizId);
-  const saved = loadJSON(`sel:${bizId}:${w.key}`, null);
-  if (Array.isArray(saved) && saved.length){
-    renderPosts(bizId, saved);
+  const saved = loadJSON(`gen:${bizId}:${currentValue(bizId)}`, null);
+  if (saved && saved.weeks && saved.weeks.length){
+    renderStore(bizId, saved);
   } else {
     const biz = BIZ.find(b=>b.id===bizId);
     const box = document.getElementById(`posts-${bizId}`);
     box.classList.remove("show");
-    box.innerHTML = `<div class="empty"><div class="big" aria-hidden="true">${biz.emoji}</div>Pick a week above and tap <strong>Generate 2 posts</strong>.</div>`;
+    box.innerHTML = `<div class="empty"><div class="big" aria-hidden="true">${biz.emoji}</div>Pick a week or month above and tap <strong>Generate posts</strong>.</div>`;
   }
 }
 
@@ -530,12 +687,11 @@ document.addEventListener("click", (e)=>{
   if (!btn) return;
   const act = btn.dataset.act;
   const bizId = btn.dataset.biz;
-  if (act === "gen"){ generate(bizId, true); document.getElementById(`posts-${bizId}`).scrollIntoView({behavior:"smooth",block:"nearest"}); }
-  else if (act === "new"){ generate(bizId, true); }
+  if (act === "gen"){ generate(bizId); document.getElementById(`posts-${bizId}`).scrollIntoView({behavior:"smooth",block:"nearest"}); }
+  else if (act === "new"){ generate(bizId); }
   else if (btn.classList.contains("copy")){
     const biz = BIZ.find(b=>b.id===bizId);
-    const w = selectedWeek(bizId);
-    const post = biz.lib[seasonOf(w.mon)][Number(btn.dataset.idx)];
+    const post = biz.lib[btn.dataset.season][Number(btn.dataset.idx)];
     doCopy(buildCopyText(biz, post), btn);
   }
 });
