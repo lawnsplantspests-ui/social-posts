@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- user-scalable left ON for accessibility (pinch-zoom allowed) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2d6a2d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Posts">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Free social media post generator for Harrisburg PA businesses. Pick a week, copy 2 ready-to-post educational posts, schedule in Meta Business Suite.">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%232d6a2d'/%3E%3Ctext x='90' y='120' font-size='96' text-anchor='middle'%3E%F0%9F%93%85%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Social%20Post%20Generator%22%2C%22short_name%22%3A%22Posts%22%2C%22start_url%22%3A%22.%22%2C%22scope%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f4f7f4%22%2C%22theme_color%22%3A%22%232d6a2d%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520viewBox%253D%25270%25200%2520180%2520180%2527%253E%253Crect%2520width%253D%2527180%2527%2520height%253D%2527180%2527%2520rx%253D%252740%2527%2520fill%253D%2527%25232d6a2d%2527%252F%253E%253Ctext%2520x%253D%252790%2527%2520y%253D%2527120%2527%2520font-size%253D%252796%2527%2520text-anchor%253D%2527middle%2527%253E%25F0%259F%2593%2585%253C%252Ftext%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+<title>Social Post Generator — Lawns Plants &amp; Pests</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#1a1a1a; --ink-soft:#555; --ink-mute:#888; --line:#e6e6e6;
+    --bg:#f4f7f4; --card:#ffffff; --radius:14px;
+    --focus:#0a58ca;
+    --pest:#2d6a2d; --pest-dark:#1b4332; --pest-light:#e8f5e9;
+    --api:#b06a00;  --api-dark:#7a4800;  --api-light:#fff6e0;
+    --pet:#b23a6f;  --pet-dark:#7d1f4b;  --pet-light:#fceef4;
+    --q:#5b52e0; --cta:#0069a8; --poll:#c02626; --share:#c85a00;
+    --font:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--font); color:var(--ink); line-height:1.5;
+    background:linear-gradient(160deg,#f2f7f2 0%,#fdf7ec 60%,#fbeef4 100%);
+    background-attachment:fixed;
+    padding:env(safe-area-inset-top) 14px calc(48px + env(safe-area-inset-bottom));
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  /* Skip link */
+  .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--focus);
+    padding:10px 16px;border-radius:8px;font-weight:700;z-index:999}
+  .skip:focus{left:8px;top:8px}
+
+  /* Focus visibility for keyboard + screen-reader users */
+  a:focus-visible,button:focus-visible,select:focus-visible,[tabindex]:focus-visible{
+    outline:3px solid var(--focus); outline-offset:2px; border-radius:6px}
+
+  header.app{text-align:center;padding:22px 6px 10px}
+  header.app h1{font-size:23px;font-weight:800;letter-spacing:-.3px;line-height:1.25}
+  header.app p{color:var(--ink-soft);font-size:14px;margin-top:6px}
+  header.app .tag{color:var(--ink-mute);font-size:12.5px;margin-top:4px}
+
+  /* Install / help strip */
+  .helpbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0 6px}
+  .helpbar button{
+    background:#fff;border:1.5px solid var(--line);color:var(--ink-soft);
+    border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;
+    min-height:44px}
+  .helpbar button:hover{border-color:#ccc}
+
+  /* Business panel */
+  .panel{background:#fbfbfb;border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;margin:18px 0;box-shadow:0 6px 22px rgba(0,0,0,.06)}
+  .phead{padding:18px 18px 16px;color:#fff}
+  .phead .emoji{font-size:30px;line-height:1}
+  .phead h2{font-size:19px;font-weight:800;margin-top:6px;font-family:Georgia,'Times New Roman',serif}
+  .phead .sub{font-size:12.5px;opacity:.85;margin-top:3px}
+  .panel[data-biz="pest"] .phead{background:linear-gradient(135deg,var(--pest-dark),var(--pest))}
+  .panel[data-biz="apiary"] .phead{background:linear-gradient(135deg,var(--api-dark),var(--api))}
+  .panel[data-biz="petals"] .phead{background:linear-gradient(135deg,var(--pet-dark),var(--pet))}
+
+  .controls{padding:16px 18px;background:#fff;border-bottom:1px solid var(--line)}
+  .controls label{display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+  select{
+    flex:1 1 210px;min-width:0;min-height:48px;padding:10px 12px;border-radius:10px;
+    border:1.5px solid #cfd8cf;background:#fff;color:var(--ink);font-size:15px;font-family:inherit;
+    cursor:pointer}
+  .gen{
+    min-height:48px;padding:10px 22px;border:none;border-radius:10px;color:#fff;
+    font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+  .panel[data-biz="pest"] .gen{background:var(--pest)}
+  .panel[data-biz="apiary"] .gen{background:var(--api)}
+  .panel[data-biz="petals"] .gen{background:var(--pet)}
+  .gen:hover{filter:brightness(1.06)}
+  .hint{font-size:12.5px;color:var(--ink-mute);margin-top:9px}
+
+  .posts{padding:14px 18px 20px;display:none}
+  .posts.show{display:block}
+  .posts .lead{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+
+  .postcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:15px 16px;margin-bottom:14px}
+  .panel[data-biz="pest"] .postcard{border-left:5px solid var(--pest)}
+  .panel[data-biz="apiary"] .postcard{border-left:5px solid var(--api)}
+  .panel[data-biz="petals"] .postcard{border-left:5px solid var(--pet)}
+  .pc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+  .datechip{font-size:12.5px;font-weight:700;color:#333;background:#f1f1f1;border-radius:7px;padding:4px 10px}
+  .badge{font-size:11px;font-weight:800;border-radius:999px;padding:3px 11px;white-space:nowrap}
+  .badge.question{color:var(--q);background:#5b52e018;border:1px solid #5b52e044}
+  .badge.cta{color:var(--cta);background:#0069a818;border:1px solid #0069a844}
+  .badge.poll{color:var(--poll);background:#c0262618;border:1px solid #c0262644}
+  .badge.share{color:var(--share);background:#c85a0018;border:1px solid #c85a0044}
+  .topic{font-size:11.5px;color:var(--ink-mute);font-style:italic;width:100%}
+  .body{font-size:15.5px;color:#1a1a1a;line-height:1.72;white-space:pre-wrap;margin-bottom:10px}
+  .tags{font-size:13.5px;font-weight:600;margin-bottom:13px;word-break:break-word}
+  .panel[data-biz="pest"] .tags{color:var(--pest)}
+  .panel[data-biz="apiary"] .tags{color:var(--api-dark)}
+  .panel[data-biz="petals"] .tags{color:var(--pet)}
+  .copy{min-height:46px;padding:9px 18px;border-radius:9px;font-size:14px;font-weight:800;
+    cursor:pointer;border:1.5px solid}
+  .panel[data-biz="pest"] .copy{color:var(--pest);background:var(--pest-light);border-color:#2d6a2d55}
+  .panel[data-biz="apiary"] .copy{color:var(--api-dark);background:var(--api-light);border-color:#b06a0055}
+  .panel[data-biz="petals"] .copy{color:var(--pet);background:var(--pet-light);border-color:#b23a6f55}
+  .copy.done{color:#fff}
+  .panel[data-biz="pest"] .copy.done{background:var(--pest)}
+  .panel[data-biz="apiary"] .copy.done{background:var(--api)}
+  .panel[data-biz="petals"] .copy.done{background:var(--pet)}
+
+  .postactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+  .newset{background:transparent;border:1.5px dashed #bbb;color:var(--ink-soft);
+    min-height:44px;padding:8px 16px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer}
+
+  .empty{padding:30px 18px;text-align:center;color:var(--ink-mute);font-size:14px}
+  .empty .big{font-size:40px;margin-bottom:8px}
+
+  /* Guide + dialog */
+  details.guide{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:4px 18px;margin:18px 0}
+  details.guide summary{cursor:pointer;font-size:14.5px;font-weight:800;padding:14px 0;list-style:none}
+  details.guide summary::-webkit-details-marker{display:none}
+  details.guide summary::before{content:"▸ ";color:var(--ink-mute)}
+  details.guide[open] summary::before{content:"▾ "}
+  details.guide ol,details.guide ul{margin:2px 0 16px;padding-left:22px;font-size:14px;color:var(--ink-soft);line-height:1.95}
+  details.guide li strong{color:var(--ink)}
+
+  footer{text-align:center;color:var(--ink-mute);font-size:12px;margin:26px 0 6px;line-height:1.7}
+  footer a{color:var(--ink-soft)}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media (max-width:430px){
+    header.app h1{font-size:20px}
+    .gen{flex:1 1 100%}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the post generator</a>
+
+<!-- Announcements for screen readers -->
+<div id="live" class="sr-only" role="status" aria-live="polite"></div>
+
+<div class="wrap">
+  <header class="app">
+    <h1>📅 Social Post Generator</h1>
+    <p>Pick a week → get 2 ready-to-post educational posts → copy &amp; schedule in Meta Business Suite.</p>
+    <p class="tag">Free · Works offline · No login · Nothing to install (but you can add it to your phone)</p>
+    <div class="helpbar">
+      <button type="button" id="installBtn">📲 Add to home screen</button>
+      <button type="button" onclick="document.getElementById('howto').open=true;document.getElementById('howto').scrollIntoView({behavior:'smooth'})">❓ How to schedule</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <details class="guide" id="howto">
+    <summary>📋 How to schedule these in Meta Business Suite (free)</summary>
+    <ol>
+      <li>Go to <strong>business.facebook.com</strong> and pick your business.</li>
+      <li>Open <strong>Planner</strong> in the left-hand menu.</li>
+      <li>Click the date you want, then <strong>Create post</strong>.</li>
+      <li>Tick both <strong>Facebook</strong> and <strong>Instagram</strong>.</li>
+      <li>Back here, tap <strong>📋 Copy post</strong>, then paste it into the post box.</li>
+      <li>Set the time and click <strong>Schedule</strong>. Done!</li>
+    </ol>
+    <p style="font-size:13px;color:#888;margin-bottom:14px">Tip: posting 2× a week (a Monday and a Friday) keeps your pages active without being spammy.</p>
+  </details>
+
+  <footer>
+    Built for Lawns Plants &amp; Pests · Harrisburg, PA<br>
+    Educational posts only — no sales or ads. Copy, tweak if you like, then schedule.
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+/* ---------- Businesses + content library ----------
+   Each post: t=topic, type=engagement badge, p=post text (ends with a natural
+   engagement prompt), h=post-specific hashtags. Base tags + website added on copy.
+------------------------------------------------------------------ */
+
+const BIZ = [
+  {
+    id:"pest", emoji:"🌿", name:"Lawns Plants & Pests LLC",
+    site:"lawnsplantspests.com", base:"#LawnsPlantsPests #HarrisburgPA",
+    lib:{
+      spring:[
+        {t:"Crabgrass timing",type:"question",p:"The secret to a crabgrass-free lawn isn't the product — it's the timing. Pre-emergent needs to go down before soil hits about 55°F, right around when the forsythia bushes bloom here in central PA. Miss that window and the weeds win.\nWhen did you spot your first dandelion this year?",h:"#CrabgrassControl #LawnCareTips #PALawns"},
+        {t:"Mowing height",type:"cta",p:"Cutting your grass too short is the #1 lawn mistake we see. Keep the mower at 3–3.5 inches and never remove more than a third of the blade at once. Taller grass shades out weeds and grows deeper roots that shrug off summer drought.\nSave this before your next mow. 🌱",h:"#MowingTips #HealthyLawn #LawnCare"},
+        {t:"Spring vs fall seeding",type:"poll",p:"Thinking of thickening up a thin lawn? Fall is actually the best time to seed cool-season grasses in PA, but early spring can work if you skip the crabgrass pre-emergent that year (it stops grass seed too).\nWhich camp are you in — spring seeder or fall seeder?",h:"#Overseeding #LawnRenovation #PALawns"},
+        {t:"Lanternfly eggs",type:"share",p:"Spotted lanternfly egg masses look like a smear of grayish mud on tree trunks, fence posts, and even patio furniture. Scrape any you find into a bag with hand sanitizer this spring — each mass is 30–50 future bugs stopped before they hatch.\nTag a neighbor so they can check their yard too.",h:"#SpottedLanternfly #InvasiveSpecies #PA"},
+        {t:"Soil test first",type:"question",p:"Before you dump fertilizer on the lawn this spring, consider a soil test. It tells you your pH and exactly what's missing, so you feed what the lawn actually needs instead of guessing. Penn State Extension offers cheap mail-in kits.\nHave you ever had your soil tested?",h:"#SoilHealth #LawnCare #GardeningPA"},
+        {t:"Mulch volcanoes",type:"cta",p:"Please don't build a 'mulch volcano' around your trees! Piling mulch against the trunk traps moisture, invites rot, rodents, and disease. Keep mulch 2–3 inches deep and pulled back a few inches from the bark — a donut, not a volcano.\nSave this and check your trees this weekend.",h:"#TreeCare #Mulching #LandscapingTips"},
+        {t:"Dandelion debate",type:"poll",p:"Dandelions: those first yellow flowers are one of the earliest food sources for bees and other pollinators. But left alone, one plant can spread hundreds of seeds across your lawn.\nPull 'em, treat 'em, or leave 'em for the bees? Drop your vote below. 👇",h:"#Dandelions #Pollinators #LawnCare"},
+        {t:"Ants vs termites",type:"question",p:"See winged insects swarming this spring? Flying ants have bent antennae, a pinched waist, and uneven wings. Termites have straight antennae, a thick waist, and four equal wings. One is a nuisance — the other quietly eats your house.\nNot sure which you've got? That's what we're here for.",h:"#PestControl #Termites #HomeMaintenance"}
+      ],
+      summer:[
+        {t:"Deep watering",type:"cta",p:"In summer heat, water deep and infrequent — about 1 inch once or twice a week, early in the morning. Light daily sprinkles train roots to stay shallow, which makes your lawn weaker when drought hits. A tuna can on the lawn is a perfect free rain gauge.\nSave this watering rule for the hot months. ☀️",h:"#LawnWatering #SummerLawn #LawnCareTips"},
+        {t:"Grub warning signs",type:"question",p:"If patches of your lawn feel spongy and pull up like a loose carpet — or birds and skunks are suddenly digging it up — you may have grubs feeding on the roots below. Mid-to-late summer is when the damage shows.\nSeeing any brown patches that just won't green up?",h:"#GrubControl #LawnPests #PALawns"},
+        {t:"Dormant vs green",type:"poll",p:"During a heat wave, cool-season grass can go brown and dormant to protect itself — it's usually not dead, just napping, and greens back up with rain. Keeping it green all summer means committing to regular watering.\nDo you water through droughts, or let it go dormant and bounce back?",h:"#SummerLawn #DroughtTips #LawnCare"},
+        {t:"Mosquito prevention",type:"share",p:"Mosquitoes only need a bottlecap of water to breed. Walk your yard once a week and dump anything holding water — plant saucers, kids' toys, clogged gutters, that forgotten wheelbarrow. It's the single most effective thing you can do to cut the bites.\nShare this with someone planning a backyard cookout. 🦟",h:"#MosquitoControl #BackyardTips #SummerPests"},
+        {t:"Japanese beetles",type:"question",p:"Those metallic-green beetles skeletonizing your roses and beans are Japanese beetles. Hand-picking them into soapy water in the early morning works well — but skip the hanging traps, which actually lure MORE beetles into your yard than they catch.\nAre they hitting your garden this year?",h:"#JapaneseBeetles #GardenPests #PestControl"},
+        {t:"Skip summer feeding",type:"cta",p:"Resist the urge to fertilize cool-season lawns in the peak of summer. Pushing new growth when grass is heat-stressed can burn it and invite disease. Wait for the cooler days of early fall — that's when a feeding really pays off.\nSave this so you don't feed at the wrong time. 🌡️",h:"#LawnFertilizer #SummerLawnCare #PALawns"},
+        {t:"Sharp blade check",type:"poll",p:"A dull mower blade tears grass instead of slicing it, leaving ragged brown tips that invite disease. Most blades need sharpening every 20–25 hours of mowing — roughly once or twice a season.\nBe honest: when did you last sharpen your mower blade?",h:"#MowingTips #LawnCare #YardWork"},
+        {t:"Ticks & tall grass",type:"question",p:"Ticks love tall grass and the shady edge where your lawn meets the woods. Keeping grass mowed and clearing a border strip makes your yard far less inviting. Pennsylvania leads the country in Lyme disease, so it's worth the effort.\nDo you check for ticks after yard work?",h:"#TickPrevention #LymeDisease #PA"}
+      ],
+      fall:[
+        {t:"Fall is prime time",type:"cta",p:"Fall is the single best time to overseed and fertilize a cool-season lawn in PA. The soil is still warm, nights are cool, weeds are fading, and grass pours its energy into roots. Do the work now and you'll have a thicker, tougher lawn next spring.\nSave this — your fall to-do list starts here. 🍂",h:"#FallLawnCare #Overseeding #PALawns"},
+        {t:"Leaves: mulch it",type:"question",p:"You don't always have to rake. A thin layer of leaves chopped up with your mower breaks down into free fertilizer and feeds the soil over winter. Just don't let a thick, wet mat sit on the grass — that smothers it.\nTeam rake, or team mulch-mow?",h:"#FallLeaves #LawnCare #SoilHealth"},
+        {t:"Aeration",type:"poll",p:"Core aeration pulls little plugs of soil out of a compacted lawn, letting air, water, and nutrients reach the roots. Paired with fall overseeding, it's one of the best things you can do all year for tired turf.\nAerating this fall — yes or not this year?",h:"#Aeration #FallLawnCare #LawnRenovation"},
+        {t:"Rodent-proofing",type:"share",p:"As nights get cold, mice and rats start hunting for a warm place to overwinter — and a gap the width of a pencil is all they need to get inside. Seal cracks, add door sweeps, and store firewood away from the house before the first hard frost.\nShare with a friend who just found 'droppings in the garage.' 🐭",h:"#RodentControl #FallPestControl #HomeTips"},
+        {t:"Fall invaders",type:"question",p:"Stink bugs, boxelder bugs, and cluster flies aren't trying to eat your house — they just want to sleep through winter inside your walls. The fix is sealing entry points now, before they gather on warm sunny walls in October.\nAre they showing up on your windows yet?",h:"#StinkBugs #FallPests #PestControl"},
+        {t:"Last mow shorter",type:"cta",p:"For your final mow of the season, drop the height to about 2.5 inches. Shorter grass going into winter is less likely to mat down under snow and develop snow mold, that gray matted patch you find in spring.\nSave this for your last mow of the year. ❄️",h:"#LawnCareTips #WinterPrep #PALawns"},
+        {t:"Bag or mulch leaves",type:"poll",p:"Whole leaves matted on the lawn block light and trap moisture, but shredded leaves are a soil superfood. If you're not mulch-mowing, at least move them to garden beds instead of the trash.\nBag them, mulch them, or blow them into the beds?",h:"#FallLeaves #Composting #YardWork"},
+        {t:"Webworm vs bagworm",type:"question",p:"Seeing silky nests in your trees? Fall webworms build airy webs at the ends of branches and are mostly cosmetic. Bagworms make tough little cone-shaped 'bags' and can defoliate evergreens. Knowing which you have decides whether to shrug or act.\nSpotted any webbing in your trees this fall?",h:"#TreePests #Bagworms #PestControl"}
+      ],
+      winter:[
+        {t:"Salt damage",type:"cta",p:"That white crust along your driveway edge in spring is often salt burn. Rock salt draws moisture out of grass and soil. Try sand or a pet-safe calcium chloride for traction, and rinse salty edges once the thaw comes.\nSave this before the next snowfall. ❄️",h:"#WinterLawnCare #SaltDamage #PALawns"},
+        {t:"Vole tunnels",type:"question",p:"Find winding, snake-like trails of matted brown grass when the snow melts? Those are vole runways — little rodents that tunnel under the snow all winter, munching roots and bark. A tidy fall cleanup gives them less cover.\nEver found these mystery trails in your yard?",h:"#Voles #WinterPests #LawnDamage"},
+        {t:"Plan next year",type:"poll",p:"Winter is the perfect time to plan next season — soil test results, a weed-and-feed schedule, that bare patch you keep meaning to fix. A little planning now beats scrambling in May.\nWhat's your #1 lawn goal for next year — thicker turf, fewer weeds, or less work?",h:"#LawnGoals #Planning #LawnCare"},
+        {t:"Winter pest-proofing",type:"share",p:"Winter is actually prime time for pests to move in — mice, spiders, and overwintering insects all want your warm house. Sealing gaps, decluttering the garage, and keeping food sealed does more than any spray once they're inside.\nShare with anyone who says 'I only have bugs in summer.' 🕷️",h:"#PestControl #WinterPests #HomeMaintenance"},
+        {t:"Dormant oil",type:"question",p:"On mild winter days, dormant oil sprayed on trees and shrubs smothers overwintering scale, mites, and aphid eggs before they wake up in spring. It's a quiet, low-toxicity way to knock back next year's pests.\nHave you ever used dormant oil on your shrubs?",h:"#PlantHealth #DormantOil #GardeningPA"},
+        {t:"Stay off frosty grass",type:"cta",p:"Walking across frozen or frost-covered grass snaps the frozen blades and can leave brown footprints that linger for weeks. When it's crunchy underfoot, take the long way around.\nSave this and give your lawn a break on frosty mornings. 🥾",h:"#WinterLawnCare #LawnTips #PALawns"},
+        {t:"Fungus gnats",type:"poll",p:"Little black flies drifting up from your houseplants in winter are usually fungus gnats — a sign you're overwatering. Let the top inch of soil dry out between waterings and they'll fade fast.\nBattling houseplant bugs right now — yes or no?",h:"#Houseplants #FungusGnats #IndoorPests"},
+        {t:"Why pests come in",type:"question",p:"Ever wonder why you see more spiders and mice indoors in winter? They're not breeding more — they're following warmth, moisture, and food right into your home. That's why pest control is a year-round job, not just a summer one.\nWhere in the house do you spot them most?",h:"#PestControl #WinterPests #HomeTips"}
+      ]
+    }
+  },
+  {
+    id:"apiary", emoji:"🍯", name:"The Alleman Apiary",
+    site:"allemanapiary.com", base:"#AllemanApiary #HarrisburgPA",
+    lib:{
+      spring:[
+        {t:"Spring buildup",type:"question",p:"In spring a honeybee colony can explode from a few thousand bees to 50,000+ in a matter of weeks as the queen ramps up egg-laying. All that growth is what makes swarm season begin. It's the busiest, most exciting time in the beeyard.\nEver seen a hive up close in spring?",h:"#Beekeeping #HoneyBees #SpringBees"},
+        {t:"Don't spray a swarm",type:"cta",p:"A swarm of honeybees hanging in a tree looks alarming but is usually gentle — they have no hive to defend and are just house-hunting. Please don't spray them! Call a local beekeeper and we'll happily rehome them for free.\nSave a beekeeper's number before swarm season. 🐝",h:"#BeeSwarm #SaveTheBees #Pollinators"},
+        {t:"First nectar",type:"poll",p:"After a long winter, the first big nectar and pollen sources here are maple, willow, dandelion, and fruit tree blossoms. That early forage is what fuels the whole colony's spring growth.\nWhich spring bloom do you think bees love most — dandelion, maple, or apple blossom?",h:"#Pollinators #Beekeeping #SpringForage"},
+        {t:"Plant for bees",type:"share",p:"Want to help pollinators? Plant early bloomers like crocus, willow, and fruit trees, and leave a few dandelions be. Those first flowers are a lifeline for hungry bees emerging from winter.\nShare this with a gardener friend planning their spring beds. 🌸",h:"#BeeFriendly #Pollinators #GardeningPA"},
+        {t:"The waggle dance",type:"question",p:"When a forager finds a great patch of flowers, she comes home and does a 'waggle dance' — a figure-eight wiggle that tells her sisters the exact direction and distance to the food. Bees were doing GPS long before we were.\nDid you know bees could give directions?",h:"#BeeFacts #HoneyBees #Nature"},
+        {t:"Water for bees",type:"cta",p:"Bees need water as much as nectar — for cooling the hive and feeding brood. A shallow dish with pebbles or corks for landing spots keeps them from drowning and keeps them out of your pool and pet bowls.\nSave this and set out a bee bath this spring. 💧",h:"#SaveTheBees #Pollinators #Beekeeping"},
+        {t:"Raw vs filtered",type:"poll",p:"Raw honey is simply strained, keeping its natural pollen, enzymes, and flavor. Grocery-store honey is often heated and ultra-filtered for a clear look, which strips some of that character.\nTeam raw local honey or team clear golden squeeze-bottle?",h:"#RawHoney #LocalHoney #Honey"},
+        {t:"Package vs nuc",type:"question",p:"Thinking of starting a hive? A 'package' is a box of loose bees with a new queen, while a 'nuc' is a small working mini-colony with drawn comb and brood. Nucs tend to get established faster for beginners.\nDreaming of your first hive? Ask us anything.",h:"#Beekeeping101 #NewBeekeeper #HoneyBees"}
+      ],
+      summer:[
+        {t:"Nectar flow",type:"question",p:"Summer's 'nectar flow' is when flowers are pumping out nectar and bees are working dawn to dusk to bring it in. Beekeepers add extra boxes called supers to give them room to store all that soon-to-be honey.\nEver wonder how bees decide when to make honey?",h:"#Beekeeping #NectarFlow #Honey"},
+        {t:"Bee vs yellowjacket",type:"cta",p:"That thing bothering your picnic is probably NOT a honeybee. Honeybees are fuzzy, golden-brown, and focused on flowers. Yellowjackets are shiny, bright yellow, and after your soda and burger. Honeybees rarely sting away from the hive.\nSave this so you know who to thank and who to shoo. 🐝",h:"#HoneyBees #Yellowjackets #BeeFacts"},
+        {t:"Honey varieties",type:"poll",p:"Honey tastes like wherever the bees foraged. Clover honey is mild and light; wildflower is richer and changes with the season; goldenrod is bold and a little tangy. Same bees, totally different jars.\nMild clover or bold wildflower — what's your honey style?",h:"#LocalHoney #Honey #Beekeeping"},
+        {t:"Protect foragers",type:"share",p:"If you spray your yard, do it in the evening when bees have gone home, and never on blooming flowers. Better yet, mow clover before it flowers so bees aren't foraging where the mower and sprays go.\nShare this with a neighbor who loves a spotless lawn. 🌼",h:"#SaveTheBees #Pollinators #BeeFriendly"},
+        {t:"How much honey",type:"question",p:"To make a single pound of honey, bees visit roughly 2 million flowers and fly the equivalent of twice around the globe. A healthy hive might produce 30–60 pounds of surplus in a good year.\nGuess how many flowers make one jar — did the number surprise you?",h:"#BeeFacts #Honey #HoneyBees"},
+        {t:"Heat & water",type:"cta",p:"In a heat wave, bees fan their wings and haul in water to air-condition the hive and keep the brood from overheating. Setting out a shallow water source with landing spots is a simple way to help them through the dog days.\nSave this and put out a bee bath this week. ☀️",h:"#SaveTheBees #SummerBees #Pollinators"},
+        {t:"Local honey season",type:"poll",p:"Summer is when local honey supplies build up. Buying from a nearby beekeeper means fresher honey, a taste of your own region's flowers, and direct support for local pollinators.\nHow do you use your honey most — in tea, on toast, or straight off the spoon?",h:"#LocalHoney #ShopLocal #Honey"},
+        {t:"Drones",type:"question",p:"The chunky, big-eyed bees in a summer hive are drones — the males. Their one job is to mate with a queen, and they can't even sting. Come fall, the workers evict them to save resources for winter. Tough crowd.\nDid you know male bees can't sting?",h:"#BeeFacts #HoneyBees #Nature"}
+      ],
+      fall:[
+        {t:"Mite treatment",type:"cta",p:"Fall is make-or-break for beekeepers: treating hives for varroa mites now is the single biggest factor in whether a colony survives winter. Untreated mites weaken the bees that have to live for months in the cold.\nSave this — it's why fall is such a critical season in the beeyard. 🍯",h:"#Beekeeping #VarroaMites #HoneyBees"},
+        {t:"Winter prep",type:"question",p:"Honeybees don't hibernate. Instead, as it cools they form a tight 'cluster' and shiver their flight muscles to generate heat, keeping the center around 90°F even when it's freezing outside. Their fuel? The honey they stored all summer.\nEver wonder how bees survive a PA winter?",h:"#BeeFacts #WinterBees #HoneyBees"},
+        {t:"Fall forage",type:"poll",p:"Goldenrod and asters are the last big banquet of the year, giving bees a final push to fill their winter pantry. That late-season goldenrod honey has a bold, distinctive smell right in the hive.\nGoldenrod or aster — which fall bloom wins for you?",h:"#FallForage #Pollinators #Beekeeping"},
+        {t:"Leave the leaves",type:"share",p:"Cleaning up the yard for fall? Leaving some leaves, hollow stems, and native plants standing gives many native bees and other pollinators a place to overwinter. A too-tidy yard can be a food desert.\nShare with a friend who's about to rake it all away. 🍂",h:"#Pollinators #SaveTheBees #NativeBees"},
+        {t:"Crystallized honey",type:"question",p:"Honey turned thick and grainy in the jar? It hasn't gone bad — crystallization is completely natural and a sign it's real, raw honey. Warm the jar gently in warm water and it liquefies right back.\nDo you like your honey runny or set and creamy?",h:"#Honey #RawHoney #BeeFacts"},
+        {t:"Leave them honey",type:"cta",p:"Responsible beekeepers only harvest the surplus and leave the colony plenty of honey — often 60+ pounds — to eat through winter. Bees that starve in February don't pollinate in April.\nSave this next time you wonder why local honey costs a bit more. 🐝",h:"#Beekeeping #LocalHoney #SaveTheBees"},
+        {t:"Creamed honey",type:"poll",p:"Creamed (or 'whipped') honey isn't whipped with air — it's crystallized in a controlled way so the crystals stay tiny and spreadable, like honey butter. Same honey, silkier texture.\nSpreadable creamed honey or classic liquid gold?",h:"#Honey #CreamedHoney #LocalHoney"},
+        {t:"Robbing season",type:"question",p:"When flowers fade in fall, bees may try to raid weaker hives for honey — beekeepers call it 'robbing.' It's why we get careful about leaving honey exposed this time of year. Nature gets competitive when food runs short.\nHad any idea bees would rob each other?",h:"#BeeFacts #Beekeeping #HoneyBees"}
+      ],
+      winter:[
+        {t:"The winter cluster",type:"question",p:"Right now, our bees are huddled in a ball inside the hive, shivering to stay warm and slowly rotating so no one on the outside gets too cold. They'll keep the core toasty all winter on stored honey alone — no hibernation, no heater.\nAmazing what they pull off in the cold, right?",h:"#WinterBees #BeeFacts #HoneyBees"},
+        {t:"Warm honey gently",type:"cta",p:"If your honey has crystallized, warm the jar in a bowl of warm (not hot) water. Never microwave or boil it — high heat destroys the natural enzymes and delicate flavor that make raw honey special.\nSave this so you never nuke your good local honey. 🍯",h:"#Honey #RawHoney #HoneyTips"},
+        {t:"Honey in winter",type:"poll",p:"Local honey shines in winter — a spoonful in hot tea, drizzled on oatmeal, or stirred into a warm lemon drink. It's the same honey your neighborhood bees made all summer, now warming you up.\nHoney in tea or honey on toast — pick your comfort. ☕",h:"#LocalHoney #Honey #WinterComfort"},
+        {t:"Give local honey",type:"share",p:"A jar of local honey makes a thoughtful gift and directly supports the pollinators in your own community. Every purchase helps keep local hives healthy and buzzing for next season.\nShare with someone still shopping for a cozy, local gift. 🎁",h:"#LocalHoney #ShopLocal #SaveTheBees"},
+        {t:"Where's the queen",type:"question",p:"Through winter the queen sits right in the warm heart of the cluster, kept snug by her daughters. She takes a break from laying in the coldest weeks, then starts again in late winter so the colony is ready to grow when spring arrives.\nEver wonder what the queen does all winter?",h:"#BeeFacts #QueenBee #HoneyBees"},
+        {t:"Beeswax uses",type:"cta",p:"Beeswax is a beautiful byproduct of the hive — bees secrete it to build comb. It's perfect for clean-burning candles, wood polish, lip balm, and waxed food wraps. A little goes a long way.\nSave this if you'd love to try a beeswax project this winter. 🕯️",h:"#Beeswax #Beekeeping #DIY"},
+        {t:"Honey in baking",type:"poll",p:"Baking with honey adds moisture and a lovely depth grocery sugar can't match. It works beautifully in breads, granola, glazes, and cookies — just reduce other liquids a touch.\nWhat's your favorite thing to make with honey?",h:"#Honey #Baking #LocalHoney"},
+        {t:"Plan your first hive",type:"question",p:"Winter is when beekeepers plan for spring — and it's when new hives get reserved, because bee suppliers sell out early. If keeping bees has been on your list, now's the time to learn and get on a list.\nIs this the year you finally start a hive?",h:"#Beekeeping101 #NewBeekeeper #Beekeeping"}
+      ]
+    }
+  },
+  {
+    id:"petals", emoji:"🌸", name:"Plenty of Petals",
+    site:"plentyofpetalspa.com", base:"#PlentyOfPetals #HarrisburgPA",
+    lib:{
+      spring:[
+        {t:"Spring blooms",type:"question",p:"Spring is peony season — along with tulips and ranunculus, they're some of the most requested wedding flowers of the year. The catch? Peonies have a short bloom window, so dreamy peony bouquets depend a lot on your date.\nAre peonies on your wedding wish list?",h:"#WeddingFlorist #Peonies #SpringWedding"},
+        {t:"Book early",type:"cta",p:"If you're dreaming of spring florals, book your florist early. Peony and tulip season is short and popular dates fill up fast, so the sooner you reserve, the better your odds of getting exactly the blooms you love.\nSave this and start your florals search early. 💐",h:"#WeddingPlanning #WeddingFlorist #Bride"},
+        {t:"Peony vs ranunculus",type:"poll",p:"Two spring favorites: peonies are lush, romantic, and full, while ranunculus have delicate, rose-like layers and come in incredible colors. Both make a bouquet feel like spring.\nPeonies or ranunculus — which is your bouquet dream?",h:"#WeddingFlowers #Peonies #Ranunculus"},
+        {t:"Repurpose ceremony flowers",type:"share",p:"A budget-friendly florist secret: reuse your ceremony flowers at the reception. That gorgeous arch or aisle arrangement can be moved to the sweetheart table or bar so you get double the impact from the same blooms.\nShare with a friend planning their big day. 💍",h:"#WeddingTips #WeddingFlowers #BudgetWedding"},
+        {t:"Bouquet freshness",type:"question",p:"To keep your bouquet looking fresh on the wedding day, keep it out of direct sun and heat and give the stems a drink of water whenever you set it down. A good florist also conditions the flowers for days beforehand so they peak on the day.\nWhat spring colors are you leaning toward?",h:"#WeddingFlorist #BridalBouquet #WeddingTips"},
+        {t:"Seasonal is smart",type:"cta",p:"Choosing flowers that are in season means fresher blooms, better prices, and a lower footprint — because they haven't been shipped across the world. Ask your florist what's blooming beautifully for your date.\nSave this tip for your florist consultation. 🌷",h:"#SeasonalFlowers #WeddingFlorist #SustainableWedding"},
+        {t:"Bud vase vs lush",type:"poll",p:"Two centerpiece styles: clusters of simple bud vases feel airy, modern, and budget-friendly, while a single lush arrangement makes a bold romantic statement. Both can look stunning down a long table.\nBud vases or one lush centerpiece — what's your vibe?",h:"#WeddingDecor #Centerpieces #WeddingFlowers"},
+        {t:"Floral moments",type:"question",p:"A floral 'moment' or installation is a statement piece — a flower-draped arch, a hanging cloud over the head table, a wall of greenery for photos. Even one big moment can transform an entire venue.\nWhere would you put your one big floral moment?",h:"#WeddingFlorist #FloralDesign #WeddingInspo"}
+      ],
+      summer:[
+        {t:"Heat-hardy blooms",type:"question",p:"For a hot outdoor wedding, some flowers hold up far better than others. Dahlias, zinnias, sunflowers, and greenery take the heat well, while delicate blooms can wilt fast in direct summer sun.\nPlanning an outdoor summer wedding? What's your color palette?",h:"#SummerWedding #WeddingFlowers #Dahlias"},
+        {t:"Keep blooms cool",type:"cta",p:"On a hot wedding day, keep bouquets and boutonnieres in a cool, shaded spot — or even a fridge — until the last possible moment. Heat and direct sun are a bouquet's worst enemy.\nSave this tip for your summer wedding timeline. ☀️",h:"#WeddingTips #SummerWedding #BridalBouquet"},
+        {t:"Garden vs structured",type:"poll",p:"Two bouquet styles: a loose, garden-gathered look feels romantic and natural, while a rounded, structured bouquet feels classic and polished. Your flowers can match whatever mood you're going for.\nGarden-wild or neat-and-classic — which is you?",h:"#BridalBouquet #WeddingFlowers #WeddingStyle"},
+        {t:"DIY vs pro",type:"share",p:"DIY flowers can save money, but they're a big day-before job — sourcing, conditioning, arranging, and storing dozens of stems while you should be relaxing. Many couples DIY the simple pieces and leave the bouquets and installations to a pro.\nShare with a friend weighing DIY flowers. 💐",h:"#WeddingPlanning #DIYWedding #WeddingFlorist"},
+        {t:"Flower meanings",type:"question",p:"Flowers carry meaning: roses for love, peonies for a happy marriage, lavender for devotion, and sunflowers for loyalty and warmth. Weaving in a meaningful bloom makes your bouquet extra personal.\nIs there a flower with special meaning for you two?",h:"#WeddingFlowers #FlowerMeanings #WeddingInspo"},
+        {t:"Hydrate your stems",type:"cta",p:"Cut flowers drink a surprising amount. Whether it's your bouquet or DIY centerpieces, recut the stems at an angle and get them in fresh water fast — clean water and a cool spot can add days of life.\nSave this for any flowers you're handling yourself. 💧",h:"#FlowerCare #WeddingTips #WeddingFlowers"},
+        {t:"White vs bold",type:"poll",p:"Summer palettes go two ways: crisp all-white-and-greenery feels timeless and elegant, while bold brights — corals, magentas, sunny yellows — feel joyful and full of life.\nClassic white or bold summer color — which speaks to you?",h:"#WeddingColors #SummerWedding #WeddingFlowers"},
+        {t:"Boutonniere care",type:"question",p:"Boutonnieres are tiny but mighty. Keep them cool until go-time, pin them stem-down through the lapel, and mist lightly to keep them perky through the ceremony and photos.\nGoing classic rose, or something unexpected for the boutonnieres?",h:"#Boutonniere #WeddingFlowers #GroomStyle"}
+      ],
+      fall:[
+        {t:"Fall palette",type:"question",p:"Fall weddings get the richest flowers of the year — dahlias, mums, and marigolds in deep burgundy, rust, and gold, mixed with dried grasses and textured greenery. The whole season feels warm and moody.\nAre you drawn to fall's burgundy-and-gold tones?",h:"#FallWedding #WeddingFlowers #Dahlias"},
+        {t:"Fall books fast",type:"cta",p:"Fall is peak wedding season, and the best dates and florists book up months in advance. If you're planning an autumn celebration, lock in your florals early so your dream palette is still available.\nSave this and get your fall date on the calendar. 🍂",h:"#FallWedding #WeddingPlanning #WeddingFlorist"},
+        {t:"Burgundy vs terracotta",type:"poll",p:"Two gorgeous fall directions: deep burgundy and plum feel rich and dramatic, while terracotta, rust, and cream feel warm and earthy. Both are stunning against autumn light.\nBurgundy drama or terracotta warmth — what's your fall mood?",h:"#WeddingColors #FallWedding #WeddingFlowers"},
+        {t:"Dried florals",type:"share",p:"Dried and preserved flowers — pampas grass, bunny tails, strawflower — are perfect for fall and double as a lasting keepsake you can enjoy long after the wedding. They're also travel- and heat-proof.\nShare with a friend who wants flowers that last. 🌾",h:"#DriedFlowers #FallWedding #WeddingDecor"},
+        {t:"Foliage & branches",type:"question",p:"Fall is the one time of year to lean into gorgeous foliage — colored oak and maple branches, seeded eucalyptus, and berries add drama and texture that fresh flowers alone can't.\nWould you want autumn branches worked into your florals?",h:"#FallWedding #WeddingFlorist #FloralDesign"},
+        {t:"Local fall stems",type:"cta",p:"Fall is prime time for locally grown blooms — dahlias, celosia, and zinnias are at their peak here in PA. Local means fresher, longer-lasting flowers and support for nearby growers.\nSave this and ask your florist what's growing locally. 🌼",h:"#LocalFlowers #FallWedding #SeasonalFlowers"},
+        {t:"Pumpkins in decor",type:"poll",p:"Little heirloom and white pumpkins can be a charming, budget-friendly accent among fall florals — or they can tip into 'too much.' Used sparingly with elegant blooms, they add a seasonal wink.\nPumpkins in the wedding decor: yes, or hard pass?",h:"#FallWedding #WeddingDecor #AutumnWedding"},
+        {t:"Preserve your bouquet",type:"question",p:"Want to keep your bouquet forever? Fall couples love pressing or air-drying their flowers, or having them professionally preserved in resin or a frame. Ask early so the process is ready right after the big day.\nWould you preserve your bouquet as a keepsake?",h:"#BridalBouquet #DriedFlowers #WeddingKeepsake"}
+      ],
+      winter:[
+        {t:"Winter blooms",type:"question",p:"Winter weddings have their own magic. Amaryllis, anemones, ranunculus, and fragrant evergreens create a cozy, elegant look — think jewel tones or crisp white-and-green against candlelight.\nDreaming of a winter wedding? What's your color story?",h:"#WinterWedding #WeddingFlowers #Anemones"},
+        {t:"Protect from freezing",type:"cta",p:"In winter, flowers can be damaged by the cold just as easily as the heat. Never leave bouquets in a freezing car — keep them at room temperature and transport them in a warm vehicle so no petals get frostbitten.\nSave this for your winter wedding day timeline. ❄️",h:"#WinterWedding #WeddingTips #BridalBouquet"},
+        {t:"Red vs white-green",type:"poll",p:"Two classic winter looks: deep red with evergreens feels festive and romantic, while all-white-and-greenery feels crisp, modern, and snow-fresh. Both glow by candlelight.\nRich red or white-and-green for a winter wedding?",h:"#WinterWedding #WeddingColors #WeddingFlowers"},
+        {t:"Candles + greenery",type:"share",p:"A budget-friendly winter secret: lush greenery and lots of candles create a warm, romantic glow for a fraction of an all-flower look. Garlands, taper candles, and a few statement blooms go a long way.\nShare with a friend planning a cozy winter celebration. 🕯️",h:"#WinterWedding #WeddingDecor #BudgetWedding"},
+        {t:"Winter flower cost",type:"question",p:"Do flowers cost more in winter? Some do — certain blooms are imported when they're out of season. The savvy move is choosing what's naturally available in winter, like amaryllis, evergreens, and ranunculus, for the best value.\nWant help picking beautiful in-season winter blooms?",h:"#WinterWedding #WeddingFlorist #SeasonalFlowers"},
+        {t:"Book holiday dates",type:"cta",p:"Winter and holiday-season weddings are more popular than ever, and florists juggle events plus holiday orders. If your date is anywhere near the holidays, reserve your florals well ahead.\nSave this and get your winter date booked early. 💐",h:"#WinterWedding #WeddingPlanning #WeddingFlorist"},
+        {t:"Garland vs runner",type:"poll",p:"Down a long reception table, a lush evergreen or eucalyptus garland feels organic and cozy, while a full floral runner feels lavish and romantic. Both frame your table beautifully.\nGreenery garland or floral runner for the head table?",h:"#WeddingDecor #WinterWedding #Centerpieces"},
+        {t:"Press your bouquet",type:"question",p:"Winter bouquets full of ranunculus and greenery press and dry beautifully. Preserving yours — pressed in a frame or dried whole — turns your flowers into a keepsake you'll have long after the last dance.\nWould you keep your bouquet as art on the wall?",h:"#BridalBouquet #WeddingKeepsake #DriedFlowers"}
+      ]
+    }
+  }
+];
+
+/* ---------- Date helpers (dynamic — always current) ---------- */
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function mondayOf(d){
+  const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const day = x.getDay();                 // 0=Sun..6=Sat
+  const diff = (day === 0 ? -6 : 1 - day); // back to Monday
+  x.setDate(x.getDate() + diff);
+  return x;
+}
+function addDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
+function fmt(d){ return `${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; }
+function keyOf(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
+
+function seasonOf(d){
+  const m = d.getMonth(); // 0-11
+  if (m>=2 && m<=4) return "spring";
+  if (m>=5 && m<=7) return "summer";
+  if (m>=8 && m<=10) return "fall";
+  return "winter";
+}
+
+// Build the next 14 weeks starting from this week's Monday
+function weekOptions(){
+  const start = mondayOf(new Date());
+  const out = [];
+  for (let i=0;i<14;i++){
+    const mon = addDays(start, i*7);
+    const fri = addDays(mon, 4);
+    let label = `${MON[mon.getMonth()]} ${mon.getDate()} & ${MON[fri.getMonth()]} ${fri.getDate()}`;
+    if (i===0) label = "This week — " + label;
+    else if (i===1) label = "Next week — " + label;
+    out.push({ key:keyOf(mon), mon, fri, label });
+  }
+  return out;
+}
+const WEEKS = weekOptions();
+
+/* ---------- Selection logic (no repeats until pool used up) ---------- */
+function loadJSON(k, fallback){ try{ return JSON.parse(localStorage.getItem(k)) ?? fallback; }catch{ return fallback; } }
+function saveJSON(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch{} }
+
+// pick n distinct indices from a pool, avoiding recently-used, remembering choices
+function pickPosts(bizId, season, n){
+  const pool = BIZ.find(b=>b.id===bizId).lib[season];
+  const usedKey = `used:${bizId}:${season}`;
+  let used = loadJSON(usedKey, []);
+  // if nearly everything used, reset the memory
+  if (used.length > pool.length - n) used = [];
+  const avail = pool.map((_,i)=>i).filter(i=>!used.includes(i));
+  const chosen = [];
+  const bag = avail.slice();
+  while (chosen.length < n && bag.length){
+    const idx = bag.splice(Math.floor(Math.random()*bag.length),1)[0];
+    chosen.push(idx);
+  }
+  used = used.concat(chosen);
+  saveJSON(usedKey, used);
+  return chosen;
+}
+
+function buildCopyText(biz, post){
+  return `${post.p}\n\nLearn more at ${biz.site}\n\n${post.h} ${biz.base}`;
+}
+
+/* ---------- Rendering ---------- */
+const live = document.getElementById("live");
+function announce(msg){ live.textContent = ""; setTimeout(()=>{ live.textContent = msg; }, 30); }
+
+function esc(s){ return s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const TYPE_LABEL = { question:"❓ Question", cta:"📌 Save / Share", poll:"🗳️ Poll", share:"📣 Tag &amp; Share" };
+
+function render(){
+  const main = document.getElementById("main");
+  main.innerHTML = BIZ.map(biz => {
+    const opts = WEEKS.map(w=>`<option value="${w.key}">${esc(w.label)}</option>`).join("");
+    return `
+    <section class="panel" data-biz="${biz.id}" aria-labelledby="h-${biz.id}">
+      <div class="phead">
+        <div class="emoji" aria-hidden="true">${biz.emoji}</div>
+        <h2 id="h-${biz.id}">${esc(biz.name)}</h2>
+        <div class="sub">🔗 ${esc(biz.site)} · Harrisburg, PA</div>
+      </div>
+      <div class="controls">
+        <label for="wk-${biz.id}">Pick the week to post:</label>
+        <div class="row">
+          <select id="wk-${biz.id}" data-biz="${biz.id}"></select>
+          <button type="button" class="gen" data-biz="${biz.id}" data-act="gen">✨ Generate 2 posts</button>
+        </div>
+        <p class="hint" id="hint-${biz.id}"></p>
+      </div>
+      <div class="posts" id="posts-${biz.id}" aria-live="polite">
+        <div class="empty">
+          <div class="big" aria-hidden="true">${biz.emoji}</div>
+          Pick a week above and tap <strong>Generate 2 posts</strong>.
+        </div>
+      </div>
+    </section>`;
+  }).join("");
+
+  // wire selects + hints
+  BIZ.forEach(biz=>{
+    const sel = document.getElementById(`wk-${biz.id}`);
+    sel.innerHTML = WEEKS.map(w=>`<option value="${w.key}">${esc(w.label)}</option>`).join("");
+    updateHint(biz.id);
+    sel.addEventListener("change", ()=>{ updateHint(biz.id); showSaved(biz.id); });
+    showSaved(biz.id);
+  });
+}
+
+function selectedWeek(bizId){
+  const key = document.getElementById(`wk-${bizId}`).value;
+  return WEEKS.find(w=>w.key===key) || WEEKS[0];
+}
+function updateHint(bizId){
+  const w = selectedWeek(bizId);
+  document.getElementById(`hint-${bizId}`).textContent =
+    `You'll get a Monday post (${fmt(w.mon)}) and a Friday post (${fmt(w.fri)}).`;
+}
+
+function renderPosts(bizId, indices){
+  const biz = BIZ.find(b=>b.id===bizId);
+  const w = selectedWeek(bizId);
+  const season = seasonOf(w.mon);
+  const pool = biz.lib[season];
+  const days = [{lbl:"Monday", d:w.mon},{lbl:"Friday", d:w.fri}];
+  const cardsHtml = indices.map((idx,i)=>{
+    const post = pool[idx];
+    const day = days[i] || days[0];
+    return `
+      <div class="postcard">
+        <div class="pc-top">
+          <span class="datechip">${day.lbl} · ${fmt(day.d)}</span>
+          <span class="badge ${post.type}">${TYPE_LABEL[post.type]}</span>
+          <span class="topic">Topic: ${esc(post.t)}</span>
+        </div>
+        <p class="body">${esc(post.p)}</p>
+        <p class="tags">${esc(post.h)} ${esc(biz.base)}</p>
+        <button type="button" class="copy" data-biz="${bizId}" data-idx="${idx}" data-day="${i}"
+                aria-label="Copy the ${day.lbl} post for ${esc(biz.name)}">📋 Copy post</button>
+      </div>`;
+  }).join("");
+
+  const box = document.getElementById(`posts-${bizId}`);
+  box.classList.add("show");
+  box.innerHTML = `
+    <p class="lead">Tap <strong>📋 Copy post</strong>, then paste it into Meta Business Suite Planner for that date.</p>
+    ${cardsHtml}
+    <div class="postactions">
+      <button type="button" class="newset" data-biz="${bizId}" data-act="new">🔄 Give me a different set</button>
+    </div>`;
+}
+
+function generate(bizId, remember){
+  const w = selectedWeek(bizId);
+  const season = seasonOf(w.mon);
+  const indices = pickPosts(bizId, season, 2);
+  saveJSON(`sel:${bizId}:${w.key}`, indices);
+  renderPosts(bizId, indices);
+  const biz = BIZ.find(b=>b.id===bizId);
+  announce(`Generated 2 ${season} posts for ${biz.name}, for the week of ${fmt(w.mon)}.`);
+}
+
+function showSaved(bizId){
+  const w = selectedWeek(bizId);
+  const saved = loadJSON(`sel:${bizId}:${w.key}`, null);
+  if (Array.isArray(saved) && saved.length){
+    renderPosts(bizId, saved);
+  } else {
+    const biz = BIZ.find(b=>b.id===bizId);
+    const box = document.getElementById(`posts-${bizId}`);
+    box.classList.remove("show");
+    box.innerHTML = `<div class="empty"><div class="big" aria-hidden="true">${biz.emoji}</div>Pick a week above and tap <strong>Generate 2 posts</strong>.</div>`;
+  }
+}
+
+/* ---------- Copy to clipboard (mobile + desktop) ---------- */
+function doCopy(text, btn){
+  const ok = ()=>{ btn.textContent="✅ Copied!"; btn.classList.add("done"); announce("Post copied. Paste it into Meta Business Suite."); setTimeout(()=>{ btn.textContent="📋 Copy post"; btn.classList.remove("done"); },2200); };
+  const fail = ()=>{
+    const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand("copy"); ok(); }catch{ btn.textContent="⚠️ Press & hold to copy"; }
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(ok).catch(fail);
+  } else { fail(); }
+}
+
+/* ---------- Event delegation ---------- */
+document.addEventListener("click", (e)=>{
+  const btn = e.target.closest("button");
+  if (!btn) return;
+  const act = btn.dataset.act;
+  const bizId = btn.dataset.biz;
+  if (act === "gen"){ generate(bizId, true); document.getElementById(`posts-${bizId}`).scrollIntoView({behavior:"smooth",block:"nearest"}); }
+  else if (act === "new"){ generate(bizId, true); }
+  else if (btn.classList.contains("copy")){
+    const biz = BIZ.find(b=>b.id===bizId);
+    const w = selectedWeek(bizId);
+    const post = biz.lib[seasonOf(w.mon)][Number(btn.dataset.idx)];
+    doCopy(buildCopyText(biz, post), btn);
+  }
+});
+
+/* ---------- Install prompt ---------- */
+let deferredPrompt = null;
+const installBtn = document.getElementById("installBtn");
+window.addEventListener("beforeinstallprompt", (e)=>{ e.preventDefault(); deferredPrompt=e; installBtn.style.display="inline-block"; });
+installBtn.addEventListener("click", async ()=>{
+  if (deferredPrompt){ deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; installBtn.style.display="none"; }
+  else {
+    alert("To add this to your phone:\n\niPhone (Safari): tap the Share button, then 'Add to Home Screen'.\n\nAndroid (Chrome): tap the ⋮ menu, then 'Add to Home screen' / 'Install app'.");
+  }
+});
+
+render();
+</script>
+</body>
+</html>
